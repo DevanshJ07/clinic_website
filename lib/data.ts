@@ -50,6 +50,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Facilities", href: "/facilities" },
+  { label: "Nursing Home", href: "/nursing-home" },
   { label: "Doctors", href: "/doctors" },
   { label: "Find Us", href: "/find-us" },
   { label: "Contact", href: "/contact" },

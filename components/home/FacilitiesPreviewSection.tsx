@@ -28,7 +28,7 @@ export default function FacilitiesPreviewSection() {
               key={facility.id}
               href={
                 facility.id === "nursing-home"
-                  ? "/facilities"
+                  ? "/nursing-home"
                   : `/facilities#${facility.id}`
               }
               className="group bg-white/80 backdrop-blur-[2px] p-7 md:p-8 flex flex-col gap-2 hover:bg-white transition-colors"

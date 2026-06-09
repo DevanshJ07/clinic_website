@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CLINIC_IMAGES } from "@/lib/data";
 
-const INTERVAL_MS = 5000;
+const INTERVAL_MS = 3800;
 
 interface AboutImageCarouselProps {
   className?: string;
@@ -35,7 +35,7 @@ export default function AboutImageCarousel({
           <div
             key={image.src}
             className={cn(
-              "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+              "absolute inset-0 transition-opacity duration-700 ease-in-out",
               index === active ? "opacity-100" : "opacity-0"
             )}
             aria-hidden={index !== active}

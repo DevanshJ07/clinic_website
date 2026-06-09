@@ -1,295 +1,348 @@
-import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
+import { Phone, ChevronRight } from "lucide-react";
+import BloodTestRatesPanel from "@/components/facilities/BloodTestRatesPanel";
+import CategorySection from "@/components/facilities/CategorySection";
+import DiagnosticServiceCard from "@/components/facilities/DiagnosticServiceCard";
 import {
-  Stethoscope,
-  FlaskConical,
-  ScanLine,
-  Heart,
-  Baby,
-  Activity,
-  Ear,
-  SmilePlus,
-  ChevronRight,
-  Phone,
-  CheckCircle2,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import SectionHeading from "@/components/shared/SectionHeading";
-import PageHero from "@/components/shared/PageHero";
+  DIAGNOSTIC_INTRO,
+  DIAGNOSTIC_CATEGORIES,
+  PATHOLOGY_OVERVIEW,
+  PATHOLOGY_EXTENDED_NOTE,
+  BLOOD_TEST_RATES,
+  RADIOLOGY_INTRO,
+  RADIOLOGY_SERVICES,
+  CARDIOLOGY_SERVICES,
+  ENDOSCOPY_SERVICES,
+  NEUROLOGY_SERVICES,
+  PULMONARY_SERVICES,
+  PHYSIOTHERAPY_SERVICES,
+  CT_SCAN,
+  OPD_TREATMENT,
+} from "@/lib/diagnostic-services";
 import { CLINIC } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Facilities & Specialties",
+  title: "Diagnostic Centre & Facilities",
   description:
-    "Medicare offers 8+ specialties under one roof — general medicine, pathology, radiology, gynaecology, paediatrics, orthopaedics, ENT, and dental care in Howrah.",
+    "Medicare Diagnostic Centre in Howrah — NABL pathology laboratory, radiology, cardiology, CT scan, physiotherapy, and OPD treatment services.",
 };
 
-const FACILITIES = [
-  {
-    id: "general-medicine",
-    icon: Stethoscope,
-    name: "General Medicine & OPD",
-    description:
-      "Comprehensive outpatient consultations for all common illnesses, chronic disease management, preventive care, and health check-ups for all age groups.",
-    details: [
-      "Adult & elderly medicine",
-      "Chronic disease management",
-      "Fever, infections & acute illness",
-      "Annual health screenings",
-      "Referrals & second opinions",
-    ],
-    color: "bg-blue-50",
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-600",
-    borderHover: "hover:border-blue-200",
-  },
-  {
-    id: "pathology",
-    icon: FlaskConical,
-    name: "Pathology & Laboratory",
-    description:
-      "State-of-the-art diagnostic laboratory offering a full range of blood tests, urine analysis, microbiological tests, and preventive health panels.",
-    details: [
-      "Complete blood count (CBC)",
-      "Blood sugar & lipid profiles",
-      "Thyroid & hormone tests",
-      "Urine & stool analysis",
-      "Same-day report delivery",
-    ],
-    color: "bg-purple-50",
-    iconBg: "bg-purple-100",
-    iconColor: "text-purple-600",
-    borderHover: "hover:border-purple-200",
-  },
-  {
-    id: "radiology",
-    icon: ScanLine,
-    name: "Digital X-Ray & ECG",
-    description:
-      "Modern digital radiology suite with low-radiation X-ray imaging and 12-lead ECG for accurate cardiac and musculoskeletal diagnostics.",
-    details: [
-      "Digital X-Ray (all body parts)",
-      "12-lead ECG",
-      "Chest & spine imaging",
-      "Limb & joint X-rays",
-      "Same-day reports",
-    ],
-    color: "bg-sky-50",
-    iconBg: "bg-sky-100",
-    iconColor: "text-sky-600",
-    borderHover: "hover:border-sky-200",
-  },
-  {
-    id: "gynaecology",
-    icon: Heart,
-    name: "Gynaecology & Obstetrics",
-    description:
-      "Complete women's healthcare from adolescence through menopause, including prenatal care, high-risk pregnancy management, and gynaecological consultations.",
-    details: [
-      "Antenatal & postnatal care",
-      "Gynaecological consultations",
-      "Family planning counselling",
-      "Menstrual health management",
-      "High-risk pregnancy care",
-    ],
-    color: "bg-rose-50",
-    iconBg: "bg-rose-100",
-    iconColor: "text-rose-600",
-    borderHover: "hover:border-rose-200",
-  },
-  {
-    id: "paediatrics",
-    icon: Baby,
-    name: "Paediatrics",
-    description:
-      "Dedicated care for infants, children, and adolescents — with vaccination schedules, growth monitoring, and treatment for childhood illnesses.",
-    details: [
-      "Newborn & infant care",
-      "Vaccination & immunisation",
-      "Child growth assessment",
-      "Adolescent health",
-      "Nutritional counselling",
-    ],
-    color: "bg-green-50",
-    iconBg: "bg-green-100",
-    iconColor: "text-green-600",
-    borderHover: "hover:border-green-200",
-  },
-  {
-    id: "orthopaedics",
-    icon: Activity,
-    name: "Orthopaedics",
-    description:
-      "Expert diagnosis and treatment of bone, joint, and musculoskeletal conditions — from sports injuries and fractures to chronic joint pain.",
-    details: [
-      "Fracture & trauma management",
-      "Joint pain & arthritis",
-      "Sports injuries",
-      "Post-surgical rehabilitation",
-      "Spine & back pain",
-    ],
-    color: "bg-orange-50",
-    iconBg: "bg-orange-100",
-    iconColor: "text-orange-600",
-    borderHover: "hover:border-orange-200",
-  },
-  {
-    id: "ent",
-    icon: Ear,
-    name: "ENT Clinic",
-    description:
-      "Specialised care for ear, nose, and throat conditions including hearing assessments, sinusitis, tonsillitis, and voice disorders for all ages.",
-    details: [
-      "Ear pain & hearing issues",
-      "Sinusitis & allergic rhinitis",
-      "Tonsillitis & adenoids",
-      "Voice & throat disorders",
-      "Paediatric ENT",
-    ],
-    color: "bg-violet-50",
-    iconBg: "bg-violet-100",
-    iconColor: "text-violet-600",
-    borderHover: "hover:border-violet-200",
-  },
-  {
-    id: "dental",
-    icon: SmilePlus,
-    name: "Dental Care",
-    description:
-      "Comprehensive dental services in a clean, modern clinic — from routine check-ups and fillings to extractions and root canal treatment.",
-    details: [
-      "Scaling & polishing",
-      "Fillings & extractions",
-      "Root canal treatment",
-      "Dental check-ups",
-      "Oral hygiene guidance",
-    ],
-    color: "bg-teal-50",
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-600",
-    borderHover: "hover:border-teal-200",
-  },
-];
+const SERVICE_GRID =
+  "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3";
 
 export default function FacilitiesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Specialties"
-        title="All Your Healthcare Needs,
-Under One Roof"
-        subtitle="8+ specialties, modern diagnostics, and experienced specialists — everything your family needs, conveniently in one trusted location in Howrah."
-      />
+      {/* Hero + intro */}
+      <section className="relative overflow-hidden py-8 md:py-10 bg-home-hero bg-institutional-pattern border-b border-border/80">
+        <div className="container-wide relative">
+          <div className="grid lg:grid-cols-[1.2fr_200px] gap-6 lg:gap-10 items-start">
+            <div>
+              <p className="eyebrow mb-3">Facilities</p>
+              <h1 className="font-display text-[1.875rem] md:text-[2.35rem] font-semibold text-clinic-navy leading-tight mb-3">
+                Diagnostic Centre
+              </h1>
+              <div className="flex flex-col gap-3 max-w-2xl">
+                {DIAGNOSTIC_INTRO.map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-[14px] text-clinic-gray font-light leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="relative hidden lg:block aspect-square w-[200px] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm">
+              <Image
+                src="/clinic/lab-analyzer.png"
+                alt="Medicare diagnostic laboratory"
+                fill
+                className="object-cover object-center"
+                sizes="200px"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* ── Intro strip ───────────────────────────────────────── */}
-      <section className="py-10 bg-clinic-blue-50 border-b border-border">
-        <div className="container-clinic">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {FACILITIES.map((f) => (
+      {/* Category nav */}
+      <section className="sticky top-[4.25rem] md:top-[4.75rem] z-40 border-b border-border/80 bg-background/95 backdrop-blur-sm">
+        <div className="container-wide py-2 overflow-x-auto">
+          <nav
+            className="flex items-center gap-1.5 min-w-max"
+            aria-label="Diagnostic service categories"
+          >
+            {DIAGNOSTIC_CATEGORIES.map((cat) => (
               <a
-                key={f.id}
-                href={`#${f.id}`}
-                className="flex items-center gap-2 text-sm font-medium text-clinic-navy/70 hover:text-clinic-blue transition-colors duration-150"
+                key={cat.id}
+                href={`#${cat.id}`}
+                className="text-[11px] md:text-[12px] font-medium text-clinic-gray hover:text-clinic-navy border border-border/60 bg-white/60 px-2.5 py-1 hover:border-clinic-navy/25 transition-colors whitespace-nowrap"
               >
-                <f.icon className="w-3.5 h-3.5" />
-                {f.name}
+                {cat.label}
               </a>
             ))}
-          </div>
+          </nav>
         </div>
       </section>
 
-      {/* ── Facilities Grid ───────────────────────────────────── */}
-      <section className="section-py bg-white">
-        <div className="container-clinic">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {FACILITIES.map((facility) => (
-              <Card
-                key={facility.id}
-                id={facility.id}
-                className={`group ring-1 ring-border ${facility.borderHover} hover:shadow-xl hover:shadow-clinic-navy/6 transition-all duration-250 scroll-mt-24`}
-              >
-                <CardHeader className="pb-3">
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`shrink-0 w-12 h-12 rounded-xl ${facility.iconBg} flex items-center justify-center`}
-                    >
-                      <facility.icon
-                        className={`w-6 h-6 ${facility.iconColor}`}
-                      />
-                    </div>
-                    <div>
-                      <CardTitle className="text-clinic-navy font-bold text-base">
-                        {facility.name}
-                      </CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-4">
-                  <CardDescription className="text-sm text-clinic-gray leading-relaxed">
-                    {facility.description}
-                  </CardDescription>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5">
-                    {facility.details.map((detail) => (
-                      <li
-                        key={detail}
-                        className="flex items-center gap-2 text-xs text-clinic-gray"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-clinic-green shrink-0" />
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+      {/* Pathology */}
+      <CategorySection
+        id="pathology"
+        eyebrow="Laboratory"
+        title={PATHOLOGY_OVERVIEW.title}
+        bg="bg-home-trust"
+        headerAside={
+          <span className="inline-block text-[10px] font-medium uppercase tracking-[0.14em] text-clinic-navy bg-clinic-blue-50 border border-clinic-blue/15 px-2.5 py-1 lg:mt-6 shrink-0 h-fit">
+            {PATHOLOGY_OVERVIEW.nabl}
+          </span>
+        }
+      >
+        <div className="grid lg:grid-cols-[1fr_160px] gap-5 lg:gap-8 mb-6">
+          <div className="flex flex-col gap-5">
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1">
+              {PATHOLOGY_OVERVIEW.specialties.map((item) => (
+                <li
+                  key={item}
+                  className="text-[12px] text-clinic-gray font-light leading-snug pl-2.5 relative before:absolute before:left-0 before:top-[0.5em] before:w-0.5 before:h-0.5 before:rounded-full before:bg-clinic-navy/30"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="grid sm:grid-cols-3 gap-2">
+              {PATHOLOGY_OVERVIEW.subServices.map((sub) => (
+                <div
+                  key={sub.title}
+                  className="rounded-sm border border-border/50 bg-white/50 px-3 py-2.5"
+                >
+                  <h4 className="text-[13px] font-medium text-clinic-navy mb-0.5">
+                    {sub.title}
+                  </h4>
+                  <p className="text-[11px] text-clinic-gray font-light leading-snug">
+                    {sub.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-[12px] text-clinic-gray font-light leading-snug">
+              {PATHOLOGY_OVERVIEW.features.join(" · ")}
+            </p>
+          </div>
+
+          <div className="relative hidden lg:block aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-white/50">
+            <Image
+              src={PATHOLOGY_OVERVIEW.image.src}
+              alt={PATHOLOGY_OVERVIEW.image.alt}
+              fill
+              className="object-cover object-center"
+              sizes="160px"
+            />
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-[10px] font-medium uppercase tracking-[0.14em] text-clinic-gray mb-2">
+            Laboratory Equipment
+          </h3>
+          <div className="grid sm:grid-cols-3 gap-px bg-border/60 border border-border/50 rounded-sm overflow-hidden">
+            {PATHOLOGY_OVERVIEW.equipment.map((eq) => (
+              <div key={eq.model} className="bg-white/75 px-3 py-2.5">
+                <p className="text-[11px] text-clinic-gray font-light leading-snug">
+                  {eq.name}
+                </p>
+                <p className="font-display text-[13px] font-medium text-clinic-navy mt-0.5">
+                  {eq.model}
+                </p>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* ── CTA ───────────────────────────────────────────────── */}
-      <section className="section-py bg-gradient-to-r from-clinic-blue to-[oklch(0.44_0.14_248)]">
-        <div className="container-clinic">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-            <div className="flex flex-col gap-3 max-w-lg">
-              <h2
-                className="text-3xl md:text-4xl font-bold text-white leading-tight"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Need a Consultation?
-              </h2>
-              <p className="text-base text-white/75 leading-relaxed">
-                Walk in during clinic hours or call us for enquiries.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
-              <Button
-                asChild
-                className="bg-white text-clinic-blue hover:bg-clinic-blue-50 h-12 px-7 text-sm font-semibold rounded-xl shadow-md"
-              >
-                <a href={`tel:${CLINIC.contact.helpline}`}>
-                  <Phone className="w-4 h-4 mr-2" />
-                  24×7 · {CLINIC.contact.helpline}
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="text-white/80 hover:text-white hover:bg-white/10 h-12 px-7 text-sm font-semibold rounded-xl"
-              >
-                <Link href="/doctors">
-                  Meet the Doctors
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
-              </Button>
-            </div>
+        <div>
+          <h3 className="font-display text-[1.125rem] font-medium text-clinic-navy mb-3">
+            Common blood test rates
+          </h3>
+          <BloodTestRatesPanel
+            tests={BLOOD_TEST_RATES}
+            extendedNote={PATHOLOGY_EXTENDED_NOTE}
+          />
+        </div>
+      </CategorySection>
+
+      {/* Radiology */}
+      <CategorySection
+        id="radiology"
+        eyebrow="Imaging"
+        title="Radiology Services"
+        intro={RADIOLOGY_INTRO}
+        bg="bg-home-facilities"
+        headerAside={
+          <div className="relative hidden md:block w-[140px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 lg:mt-4">
+            <Image
+              src="/clinic/xray-room.png"
+              alt="Medicare digital X-ray facility"
+              fill
+              className="object-cover object-center"
+              sizes="140px"
+            />
+          </div>
+        }
+      >
+        <div className={SERVICE_GRID}>
+          {RADIOLOGY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
+      {/* Cardiology */}
+      <CategorySection
+        id="cardiology"
+        eyebrow="Heart care"
+        title="Cardiology Services"
+        bg="bg-home-about"
+      >
+        <div className={SERVICE_GRID}>
+          {CARDIOLOGY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
+      {/* Endoscopy */}
+      <CategorySection
+        id="endoscopy"
+        eyebrow="Gastroenterology"
+        title="Endoscopy & Gastro Diagnostics"
+        bg="bg-home-trust"
+      >
+        <div className="grid sm:grid-cols-2 gap-3 max-w-2xl">
+          {ENDOSCOPY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
+      {/* Neurology */}
+      <CategorySection
+        id="neurology"
+        eyebrow="Neurology"
+        title="Neurology Diagnostics"
+        bg="bg-home-facilities"
+      >
+        <div className="max-w-xs">
+          {NEUROLOGY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
+      {/* Pulmonary */}
+      <CategorySection
+        id="pulmonary"
+        eyebrow="Respiratory care"
+        title="Pulmonary Diagnostics"
+        bg="bg-home-about"
+      >
+        <div className="max-w-sm">
+          {PULMONARY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
+      {/* Physiotherapy */}
+      <CategorySection
+        id="physiotherapy"
+        eyebrow="Rehabilitation"
+        title="Physiotherapy"
+        bg="bg-home-trust"
+      >
+        <div className="max-w-md">
+          <DiagnosticServiceCard
+            name={PHYSIOTHERAPY_SERVICES.name}
+            services={PHYSIOTHERAPY_SERVICES.services}
+            price={PHYSIOTHERAPY_SERVICES.price}
+          />
+        </div>
+      </CategorySection>
+
+      {/* CT Scan */}
+      <CategorySection
+        id="ct-scan"
+        eyebrow="Advanced imaging"
+        title="CT Scan"
+        bg="bg-home-about"
+      >
+        <div className="grid lg:grid-cols-[1fr_200px] gap-4 lg:gap-6 items-start">
+          <DiagnosticServiceCard
+            name={CT_SCAN.name}
+            description={CT_SCAN.description}
+            machine={CT_SCAN.machine}
+            price={CT_SCAN.price}
+          />
+          <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden rounded-sm border border-border/60 bg-white/50">
+            <Image
+              src={CT_SCAN.image.src}
+              alt={CT_SCAN.image.alt}
+              fill
+              className="object-cover object-center"
+              sizes="200px"
+            />
+          </div>
+        </div>
+      </CategorySection>
+
+      {/* OPD */}
+      <CategorySection
+        id="opd"
+        eyebrow="Outpatient"
+        title={OPD_TREATMENT.name}
+        bg="bg-home-trust"
+      >
+        <div className="max-w-lg">
+          <DiagnosticServiceCard
+            name="Available procedures"
+            bookingName={OPD_TREATMENT.name}
+            description={OPD_TREATMENT.description}
+            services={OPD_TREATMENT.services}
+            price={OPD_TREATMENT.price}
+          />
+        </div>
+      </CategorySection>
+
+      {/* CTA */}
+      <section className="py-10 md:py-11 bg-home-contact">
+        <div className="container-wide flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p className="font-display text-[1.25rem] font-medium text-clinic-navy">
+              Book a diagnostic service
+            </p>
+            <p className="text-[13px] text-clinic-gray font-light mt-1 max-w-md">
+              Call Medicare Diagnostic Centre &amp; OPD to schedule tests or
+              imaging.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+            <a
+              href="tel:03340073713"
+              className="inline-flex items-center justify-center gap-2 text-[13px] font-medium text-white bg-clinic-navy px-5 py-3 hover:bg-clinic-navy/90 transition-colors"
+            >
+              <Phone className="w-4 h-4 stroke-[1.5]" />
+              {CLINIC.contact.diagnosticOpd}
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 text-[13px] font-medium text-clinic-navy border border-border/80 bg-white/70 px-5 py-3 hover:border-clinic-navy/30 transition-colors group"
+            >
+              Contact page
+              <ChevronRight className="w-4 h-4 stroke-[1.5] group-hover:translate-x-0.5 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
