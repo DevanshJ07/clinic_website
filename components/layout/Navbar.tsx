@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, Cross } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, Phone } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -21,7 +20,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 16);
+    const handleScroll = () => setScrolled(window.scrollY > 8);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -30,40 +29,30 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full bg-white transition-shadow duration-300",
-        scrolled ? "shadow-md" : "shadow-sm border-b border-border"
+        "sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm transition-[border-color,box-shadow] duration-300",
+        scrolled
+          ? "border-b border-border shadow-[0_1px_0_0_rgba(0,0,0,0.03)]"
+          : "border-b border-transparent"
       )}
     >
-      {/* Top accent strip */}
-      <div className="h-1 w-full bg-gradient-to-r from-clinic-blue via-clinic-blue-light to-clinic-green" />
-
-      <div className="container-clinic">
-        <nav className="flex items-center justify-between h-16 md:h-18">
+      <div className="container-wide">
+        <nav className="flex items-center justify-between h-[4.25rem] md:h-[4.75rem]">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group shrink-0"
+            className="group flex items-baseline gap-3 shrink-0"
             aria-label="Medicare — Home"
           >
-            {/* Clinic icon mark */}
-            <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-clinic-blue shadow-sm transition-transform duration-200 group-hover:scale-105">
-              <Cross className="w-4.5 h-4.5 text-white fill-white" strokeWidth={0} />
+            <span className="font-display text-[1.35rem] md:text-[1.5rem] font-medium tracking-[-0.02em] text-clinic-navy">
+              Medicare
             </span>
-            <span className="flex flex-col leading-tight">
-              <span
-                className="text-xl font-bold tracking-tight text-clinic-navy"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Medicare
-              </span>
-              <span className="text-[10px] font-medium tracking-widest uppercase text-clinic-gray hidden sm:block">
-                Clinic &amp; Diagnostic Centre
-              </span>
+            <span className="hidden sm:inline text-[10px] font-normal uppercase tracking-[0.18em] text-clinic-gray/80">
+              Est. {CLINIC.established}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => {
               const isActive =
                 link.href === "/"
@@ -74,10 +63,10 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150",
+                    "text-[13px] tracking-wide transition-colors duration-150 py-1 border-b-2 border-transparent",
                     isActive
-                      ? "text-clinic-blue bg-clinic-blue-50"
-                      : "text-clinic-navy/80 hover:text-clinic-blue hover:bg-clinic-blue-50"
+                      ? "text-clinic-navy font-medium border-clinic-navy"
+                      : "text-clinic-gray hover:text-clinic-navy"
                   )}
                 >
                   {link.label}
@@ -86,67 +75,53 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Desktop contact */}
+          <div className="hidden lg:flex items-center gap-6">
             <a
-              href={`tel:${CLINIC.contact.phone2.replace(/\s/g, "")}`}
-              className="flex items-center gap-2 text-sm text-clinic-gray hover:text-clinic-blue transition-colors duration-150"
+              href={`tel:${CLINIC.contact.helpline}`}
+              className="flex items-center gap-2 text-[13px] text-clinic-gray hover:text-clinic-navy transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" />
-              <span className="font-medium">{CLINIC.contact.phone2}</span>
+              <Phone className="w-3.5 h-3.5 stroke-[1.5]" />
+              <span className="hidden xl:inline text-clinic-gray/80 mr-0.5">
+                24×7
+              </span>
+              <span>{CLINIC.contact.helpline}</span>
             </a>
-            <Button
-              asChild
-              className="bg-clinic-blue hover:bg-clinic-navy text-white h-9 px-5 text-sm rounded-lg shadow-sm transition-colors duration-150"
+            <Link
+              href="/contact"
+              className="text-[13px] font-medium text-clinic-navy border border-clinic-navy/20 px-4 py-2 hover:bg-clinic-navy hover:text-white transition-colors duration-200"
             >
-              <a
-                href={`https://wa.me/${CLINIC.contact.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book Appointment
-              </a>
-            </Button>
+              Contact
+            </Link>
           </div>
 
-          {/* Mobile menu trigger */}
+          {/* Mobile menu */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden text-clinic-navy hover:bg-clinic-blue-50"
+              <button
+                type="button"
+                className="lg:hidden p-2 -mr-2 text-clinic-navy"
                 aria-label="Open navigation menu"
               >
-                <Menu className="w-5 h-5" />
-              </Button>
+                <Menu className="w-5 h-5 stroke-[1.5]" />
+              </button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[300px] p-0 flex flex-col">
-              <div className="h-1 w-full bg-gradient-to-r from-clinic-blue via-clinic-blue-light to-clinic-green shrink-0" />
-
-              <SheetHeader className="px-6 pt-5 pb-2">
+            <SheetContent side="right" className="w-[min(100vw-2rem,320px)] p-0 flex flex-col border-l border-border">
+              <SheetHeader className="px-6 pt-8 pb-4 border-b border-border">
                 <SheetTitle asChild>
-                  <Link href="/" className="flex items-center gap-2.5">
-                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-clinic-blue">
-                      <Cross className="w-4.5 h-4.5 text-white fill-white" strokeWidth={0} />
+                  <Link href="/" className="flex flex-col gap-1 text-left">
+                    <span className="font-display text-xl font-medium text-clinic-navy">
+                      Medicare
                     </span>
-                    <span className="flex flex-col leading-tight">
-                      <span
-                        className="text-xl font-bold text-clinic-navy"
-                        style={{ fontFamily: "var(--font-playfair)" }}
-                      >
-                        Medicare
-                      </span>
-                      <span className="text-[10px] font-medium tracking-widest uppercase text-clinic-gray">
-                        Clinic &amp; Diagnostic Centre
-                      </span>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-clinic-gray font-normal">
+                      Clinic &amp; Diagnostic Centre
                     </span>
                   </Link>
                 </SheetTitle>
               </SheetHeader>
 
-              <nav className="flex-1 px-4 py-4 flex flex-col gap-1">
+              <nav className="flex-1 px-4 py-6 flex flex-col">
                 {NAV_LINKS.map((link) => {
                   const isActive =
                     link.href === "/"
@@ -157,10 +132,10 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         className={cn(
-                          "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-150",
+                          "px-3 py-3.5 text-[15px] border-b border-border/60 transition-colors",
                           isActive
-                            ? "bg-clinic-blue-50 text-clinic-blue font-semibold"
-                            : "text-clinic-navy/80 hover:bg-clinic-blue-50 hover:text-clinic-blue"
+                            ? "text-clinic-navy font-medium"
+                            : "text-clinic-gray hover:text-clinic-navy"
                         )}
                       >
                         {link.label}
@@ -170,26 +145,33 @@ export default function Navbar() {
                 })}
               </nav>
 
-              <div className="px-4 pb-6 pt-2 border-t border-border flex flex-col gap-3">
+              <div className="px-6 pb-8 pt-4 border-t border-border flex flex-col gap-4">
                 <a
-                  href={`tel:${CLINIC.contact.phone2.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-clinic-navy bg-clinic-blue-50 hover:bg-secondary transition-colors"
+                  href={`tel:${CLINIC.contact.helpline}`}
+                  className="text-sm text-clinic-navy"
                 >
-                  <Phone className="w-4 h-4 text-clinic-blue" />
-                  {CLINIC.contact.phone2}
+                  <span className="block text-[10px] uppercase tracking-[0.15em] text-clinic-gray mb-1">
+                    24×7 Helpline
+                  </span>
+                  {CLINIC.contact.helpline}
                 </a>
-                <Button
-                  asChild
-                  className="w-full bg-clinic-blue hover:bg-clinic-navy text-white h-10 rounded-xl text-sm"
+                <a
+                  href={`tel:03340073713`}
+                  className="text-sm text-clinic-gray"
                 >
-                  <a
-                    href={`https://wa.me/${CLINIC.contact.whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <span className="block text-[10px] uppercase tracking-[0.15em] text-clinic-gray/80 mb-1">
+                    Diagnostic &amp; OPD
+                  </span>
+                  {CLINIC.contact.diagnosticOpd}
+                </a>
+                <SheetClose asChild>
+                  <Link
+                    href="/contact"
+                    className="text-center text-sm font-medium text-white bg-clinic-navy py-3 hover:bg-clinic-navy/90 transition-colors"
                   >
-                    Book Appointment
-                  </a>
-                </Button>
+                    Contact Us
+                  </Link>
+                </SheetClose>
               </div>
             </SheetContent>
           </Sheet>

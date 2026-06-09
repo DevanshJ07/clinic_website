@@ -10,7 +10,7 @@ import {
   Ear,
   SmilePlus,
   ChevronRight,
-  MessageCircle,
+  Phone,
   CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -266,8 +266,7 @@ Under One Roof"
                 Need a Consultation?
               </h2>
               <p className="text-base text-white/75 leading-relaxed">
-                Walk in during clinic hours, or reach us on WhatsApp to book an
-                appointment with one of our specialists.
+                Walk in during clinic hours or call us for enquiries.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
@@ -275,13 +274,9 @@ Under One Roof"
                 asChild
                 className="bg-white text-clinic-blue hover:bg-clinic-blue-50 h-12 px-7 text-sm font-semibold rounded-xl shadow-md"
               >
-                <a
-                  href={`https://wa.me/${CLINIC.contact.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Book via WhatsApp
+                <a href={`tel:${CLINIC.contact.helpline}`}>
+                  <Phone className="w-4 h-4 mr-2" />
+                  24×7 · {CLINIC.contact.helpline}
                 </a>
               </Button>
               <Button

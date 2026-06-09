@@ -7,6 +7,7 @@ interface SectionHeadingProps {
   centered?: boolean;
   light?: boolean;
   className?: string;
+  size?: "default" | "large";
 }
 
 export default function SectionHeading({
@@ -16,40 +17,42 @@ export default function SectionHeading({
   centered = false,
   light = false,
   className,
+  size = "default",
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-3",
-        centered && "items-center text-center",
+        "flex flex-col gap-4 max-w-2xl",
+        centered && "items-center text-center mx-auto",
         className
       )}
     >
       {eyebrow && (
-        <span
+        <p
           className={cn(
-            "inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest",
-            light ? "text-white/60" : "text-clinic-blue"
+            "eyebrow",
+            light ? "text-white/50" : "text-clinic-gray"
           )}
         >
-          <span className="block w-6 h-px bg-current opacity-60" />
           {eyebrow}
-        </span>
+        </p>
       )}
       <h2
         className={cn(
-          "text-3xl md:text-4xl font-bold leading-tight text-balance",
+          "font-display font-medium leading-[1.15] text-balance whitespace-pre-line tracking-[-0.01em]",
+          size === "large"
+            ? "text-[2rem] md:text-[2.75rem] lg:text-[3rem]"
+            : "text-[1.75rem] md:text-[2.125rem]",
           light ? "text-white" : "text-clinic-navy"
         )}
-        style={{ fontFamily: "var(--font-playfair)" }}
       >
         {title}
       </h2>
       {subtitle && (
         <p
           className={cn(
-            "text-base md:text-lg leading-relaxed max-w-2xl",
-            light ? "text-white/70" : "text-clinic-gray",
+            "text-[15px] md:text-base leading-[1.7] font-light",
+            light ? "text-white/65" : "text-clinic-gray",
             centered && "mx-auto"
           )}
         >

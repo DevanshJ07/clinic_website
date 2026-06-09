@@ -19,11 +19,11 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Medicare | Trusted Healthcare in Howrah Since 1987",
+    default: "Medicare | Trusted Healthcare in Howrah",
     template: "%s | Medicare Howrah",
   },
   description:
-    "Medicare — one of Howrah's first all-under-one-roof clinics, delivering trusted, compassionate healthcare to families for over 37 years. OPD, diagnostics, gynaecology, paediatrics, orthopaedics and more.",
+    "Medicare — over 37 years of trusted healthcare in Howrah. NABH-certified nursing home, NABL-accredited laboratory, and comprehensive care under one roof.",
   keywords: [
     "Medicare Howrah",
     "medical clinic Howrah",

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Clock, Award, ChevronRight, MessageCircle } from "lucide-react";
+import { Clock, Award, ChevronRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -204,21 +204,12 @@ Compassionate Care"
           <p className="text-center text-sm text-clinic-gray max-w-2xl mx-auto">
             <span className="font-semibold text-clinic-navy">Please note:</span>{" "}
             Doctor timings are subject to change. We recommend confirming
-            availability by calling us at{" "}
+            availability by calling{" "}
             <a
-              href={`tel:${CLINIC.contact.phone1.replace(/\s/g, "")}`}
+              href={`tel:${CLINIC.contact.diagnosticOpd}`}
               className="text-clinic-blue hover:underline font-medium"
             >
-              {CLINIC.contact.phone1}
-            </a>{" "}
-            or messaging us on{" "}
-            <a
-              href={`https://wa.me/${CLINIC.contact.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-clinic-blue hover:underline font-medium"
-            >
-              WhatsApp
+              {CLINIC.contact.diagnosticOpd}
             </a>
             .
           </p>
@@ -234,24 +225,29 @@ Compassionate Care"
                 className="text-2xl font-bold text-white"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Book an Appointment
+                Contact Us
               </h2>
               <p className="text-sm text-white/65 mt-1">
-                Reach us on WhatsApp or call to confirm availability.
+                Call our 24×7 helpline or contact the OPD desk directly.
               </p>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
               <Button
                 asChild
                 className="bg-white text-clinic-blue hover:bg-clinic-blue-50 h-11 px-6 rounded-xl text-sm font-semibold"
               >
-                <a
-                  href={`https://wa.me/${CLINIC.contact.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp
+                <a href={`tel:${CLINIC.contact.helpline}`}>
+                  <Phone className="w-4 h-4 mr-2" />
+                  {CLINIC.contact.helpline}
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="ghost"
+                className="text-white/80 hover:text-white hover:bg-white/10 h-11 px-6 rounded-xl text-sm"
+              >
+                <a href={`tel:03340073713`}>
+                  OPD · {CLINIC.contact.diagnosticOpd}
                 </a>
               </Button>
               <Button

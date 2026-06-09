@@ -2,30 +2,48 @@ export const CLINIC = {
   name: "Medicare",
   nameFull: "Medicare Clinic & Diagnostic Centre",
   tagline: "Trusted Healthcare, Compassionate Care",
-  established: 1987,
+  established: 1988,
   yearsOfService: "37+",
   address: {
-    street: "12, Rabindra Sarani, Shibpur",
+    street: "138, Grand Trunk Road South",
+    area: "Shibpur",
     city: "Howrah",
     state: "West Bengal",
-    pin: "711 102",
+    pin: "711102",
     country: "India",
-    full: "12, Rabindra Sarani, Shibpur, Howrah – 711 102, West Bengal",
+    full: "138, Grand Trunk Road South, Shibpur, Howrah, West Bengal 711102",
+  },
+  maps: {
+    url: "https://maps.app.goo.gl/pZ4Mnb3dqWwhtUZU6",
+    embed:
+      "https://maps.google.com/maps?q=138,+Grand+Trunk+Road+South,+Shibpur,+Howrah,+West+Bengal+711102&hl=en&z=16&output=embed",
   },
   contact: {
-    phone1: "+91 33 2638 4455",
-    phone2: "+91 98300 12345",
-    whatsapp: "+919830012345",
-    email: "info@medicarehowrah.in",
+    helpline: "9331076661",
+    diagnosticOpd: "033-40073713",
+    nursingHome: "033-2638-1777",
+    email: "medicareclinic@hotmail.com",
   },
   timings: {
+    diagnosticOpd: {
+      label: "Diagnostic Centre & OPD",
+      weekdays: "Monday – Saturday",
+      weekdaysHours: "8:00 AM – 8:00 PM",
+      sunday: "Sunday",
+      sundayHours: "8:00 AM – 4:00 PM",
+    },
+    nursingHome: {
+      label: "Nursing Home",
+      hours: "Open 24 Hours",
+    },
+    open365: "Open 365 days a year",
     weekdays: "Monday – Saturday",
     weekdaysHours: "8:00 AM – 8:00 PM",
-    sunday: "Sunday & Holidays",
-    sundayHours: "9:00 AM – 1:00 PM",
-    emergency: "Emergency services available 24×7",
+    sunday: "Sunday",
+    sundayHours: "8:00 AM – 4:00 PM",
+    emergency: "Nursing Home open 24 hours",
   },
-  landmark: "Near Shibpur Police Station, opposite State Bank of India",
+  landmark: "Opposite Howrah Jute Mill, Shibpur",
 };
 
 export const NAV_LINKS = [
@@ -37,11 +55,132 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+export const HOME_TRUST = [
+  { value: "37+", label: "Years of Service" },
+  {
+    value: "600,000+",
+    label: "Patients Served",
+    featured: true,
+    sub: "Overall patient care",
+  },
+  { value: "NABH", label: "Certified Nursing Home" },
+  { value: "NABL", label: "Certified Laboratory" },
+  { value: "24×7", label: "Nursing Home" },
+];
+
 export const STATS = [
-  { value: "37+", label: "Years of Service", sub: "Est. 1987" },
-  { value: "50,000+", label: "Patients Served", sub: "Trusted by families" },
-  { value: "15+", label: "Specialist Doctors", sub: "Expert care team" },
-  { value: "8+", label: "Specialties", sub: "All-under-one-roof" },
+  {
+    value: "37+",
+    label: "Years of Service",
+    sub: "Since 1988",
+  },
+  {
+    value: "NABH",
+    label: "Nursing Home",
+    sub: "Accredited inpatient care",
+  },
+  {
+    value: "NABL",
+    label: "Laboratory",
+    sub: "Accredited diagnostics",
+  },
+  {
+    value: "24×7",
+    label: "Nursing Home",
+    sub: "Open around the clock",
+  },
+];
+
+export const CERTIFICATIONS = [
+  {
+    id: "nabh",
+    acronym: "NABH",
+    fullName:
+      "National Accreditation Board for Hospitals & Healthcare Providers",
+    appliesTo: "Nursing Home",
+    description:
+      "Our nursing home meets nationally recognised standards for patient safety, clinical quality, and compassionate inpatient care.",
+    accent: "blue" as const,
+  },
+  {
+    id: "nabl",
+    acronym: "NABL",
+    fullName:
+      "National Accreditation Board for Testing and Calibration Laboratories",
+    appliesTo: "Laboratory",
+    description:
+      "Our laboratory follows rigorous quality protocols — ensuring accurate, reliable diagnostic results you and your doctor can depend on.",
+    accent: "green" as const,
+  },
+];
+
+export const CLINIC_IMAGES = [
+  {
+    src: "/clinic/reception-nabh.png",
+    alt: "Medicare reception with NABH accreditation certificates",
+  },
+  {
+    src: "/clinic/lab-analyzer.png",
+    alt: "Medicare NABL laboratory — technician at diagnostic analyzer",
+  },
+  {
+    src: "/clinic/lab-samples.png",
+    alt: "Medicare pathology laboratory with blood sample collection",
+  },
+  {
+    src: "/clinic/ct-scanner.png",
+    alt: "Medicare diagnostic centre with CT scanner",
+  },
+  {
+    src: "/clinic/xray-room.png",
+    alt: "Medicare digital X-ray facility",
+  },
+  {
+    src: "/clinic/waiting-area.png",
+    alt: "Medicare clinic waiting area",
+  },
+  {
+    src: "/clinic/operating-room.png",
+    alt: "Medicare nursing home operating room",
+  },
+  {
+    src: "/clinic/reception-team.png",
+    alt: "Medicare clinical team at reception",
+  },
+];
+
+export const ABOUT_HISTORY = [
+  "Medicare was started by two qualified eminent doctors in 1988 after noticing the lack of modern diagnostic and treatment facilities in Howrah. The idea of Medicare, a modern diagnostic cum nursing room with all facilities under one roof, was conceptualized from this need.",
+  "Medicare has been a pioneer in bringing modern diagnostic facilities to Howrah since 1988 and offers diagnostic services, specialist doctor consultations, treatments, and nursing home facilities under one roof.",
+  "Medicare has earned the trust of thousands of doctors and patients for dependable treatment and care at cost-effective rates.",
+];
+
+export const HOME_ABOUT = {
+  title: "Pioneer in modern diagnostics since 1988",
+  body: "Medicare was started by two qualified eminent doctors in 1988 after noticing the lack of modern diagnostic and treatment facilities in Howrah — a modern diagnostic cum nursing room with all facilities under one roof.",
+};
+
+export const HOME_FACILITIES = [
+  {
+    id: "general-medicine",
+    name: "OPD & General Medicine",
+    desc: "Outpatient consultations and general medical care.",
+  },
+  {
+    id: "pathology",
+    name: "Pathology & Laboratory",
+    desc: "NABL-accredited diagnostic laboratory.",
+  },
+  {
+    id: "radiology",
+    name: "Diagnostic Imaging",
+    desc: "Digital X-Ray, ECG, and advanced imaging.",
+  },
+  {
+    id: "nursing-home",
+    name: "Nursing Home",
+    desc: "NABH-certified inpatient care, open 24 hours.",
+  },
 ];
 
 export const FACILITIES_PREVIEW = [
@@ -55,7 +194,7 @@ export const FACILITIES_PREVIEW = [
     id: "pathology",
     name: "Pathology & Lab",
     icon: "FlaskConical",
-    shortDesc: "Accurate blood work, panels, and rapid diagnostics.",
+    shortDesc: "NABL-accredited laboratory with accurate, rapid diagnostics.",
   },
   {
     id: "radiology",
@@ -97,34 +236,34 @@ export const FACILITIES_PREVIEW = [
 
 export const WHY_US = [
   {
-    icon: "Award",
-    title: "37+ Years of Legacy",
-    desc: "One of Howrah's oldest and most trusted all-under-one-roof clinics, serving generations of families since 1987.",
+    icon: "BadgeCheck",
+    title: "NABH & NABL Accredited",
+    desc: "Nationally accredited nursing home and laboratory — a mark of quality, safety, and clinical excellence you can verify and trust.",
   },
   {
-    icon: "Users",
-    title: "Expert Specialists",
-    desc: "A team of 15+ experienced doctors across 8 disciplines, ensuring the right diagnosis and the right care.",
+    icon: "Award",
+    title: "37+ Years of Legacy",
+    desc: "One of Howrah's first all-under-one-roof clinics, pioneering advanced diagnostics since 1988 and serving generations of families.",
   },
   {
     icon: "Building2",
     title: "All-Under-One-Roof",
-    desc: "OPD, diagnostics, X-ray, specialist clinics — everything you need in one clean, convenient location.",
+    desc: "Diagnostics, specialist OPD, and nursing home care — comprehensive healthcare in one trusted, accessible location.",
   },
   {
-    icon: "ShieldCheck",
-    title: "Accurate Diagnostics",
-    desc: "Modern lab and digital radiology deliver precise, reliable results that your doctor can depend on.",
+    icon: "Users",
+    title: "Trusted by Thousands",
+    desc: "Trusted by thousands of doctors and patients across Howrah for dependable treatment and care.",
+  },
+  {
+    icon: "Building2",
+    title: "Nursing Home — 24 Hours",
+    desc: "NABH-certified nursing home facilities, open around the clock.",
   },
   {
     icon: "HeartHandshake",
-    title: "Family-Centred Care",
-    desc: "From newborns to elders, every patient receives personalised attention in a welcoming, respectful environment.",
-  },
-  {
-    icon: "MapPin",
-    title: "Central Howrah Location",
-    desc: "Conveniently located in Shibpur with easy access by road and public transport for patients across the district.",
+    title: "Care at Reasonable Rates",
+    desc: "Quality healthcare guided by experienced professionals — delivered with compassion and respect, without compromising on standards.",
   },
 ];
 
@@ -185,5 +324,29 @@ export const TESTIMONIALS = [
     initials: "TC",
     text: "Everything under one roof — pathology, X-ray, specialist consultations. Dr. Ghosh explained my condition with patience. This is what quality healthcare looks like.",
     rating: 5,
+  },
+];
+
+export const CONTACT_LINES = [
+  {
+    id: "helpline",
+    label: "24×7 Helpline",
+    detail: "Always available",
+    phone: CLINIC.contact.helpline,
+    tel: "9331076661",
+  },
+  {
+    id: "diagnostic-opd",
+    label: "Diagnostic Centre & OPD",
+    detail: "Mon–Sat 8 AM – 8 PM · Sun 8 AM – 4 PM",
+    phone: CLINIC.contact.diagnosticOpd,
+    tel: "03340073713",
+  },
+  {
+    id: "nursing-home",
+    label: "Nursing Home (24 hrs)",
+    detail: "Open 24 hours",
+    phone: CLINIC.contact.nursingHome,
+    tel: "03326381777",
   },
 ];

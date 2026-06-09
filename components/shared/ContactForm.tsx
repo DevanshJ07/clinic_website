@@ -136,7 +136,7 @@ export default function ContactForm() {
       </Button>
 
       <p className="text-xs text-clinic-gray text-center">
-        For urgent matters, please call us directly or use WhatsApp.
+        For urgent matters, please call us directly during clinic hours.
       </p>
     </form>
   );
