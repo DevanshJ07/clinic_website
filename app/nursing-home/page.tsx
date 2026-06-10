@@ -232,8 +232,19 @@ export default function NursingHomePage() {
       {/* Pharmacy */}
       <section className="py-10 md:py-12 bg-background border-b border-border/80">
         <div className="container-wide">
-          <div className="grid md:grid-cols-[1fr_minmax(160px,220px)] gap-6 items-start">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+            <div className="relative w-full max-w-xs mx-auto lg:max-w-sm lg:mx-0 lg:order-2 aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
+              <Image
+                src="/clinic/pharmacy.png"
+                alt="Medicare Pharmacy storefront — Chemist & Druggist, Howrah"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 320px, 384px"
+                priority
+              />
+            </div>
+
+            <div className="lg:order-1">
               <p className="eyebrow mb-3">On-site pharmacy</p>
               <h2 className="font-display text-[1.375rem] md:text-[1.5rem] font-medium text-clinic-navy mb-2">
                 Medicare Pharmacy
@@ -245,15 +256,6 @@ export default function NursingHomePage() {
                 <Clock className="w-3.5 h-3.5 stroke-[1.5] text-clinic-gray" />
                 9 AM – 8 PM
               </p>
-            </div>
-            <div className="relative aspect-[3/4] max-w-[220px] mx-auto md:mx-0 md:ml-auto overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-              <Image
-                src="/clinic/pharmacy.png"
-                alt="Medicare Pharmacy storefront — Chemist & Druggist, Howrah"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 220px, 220px"
-              />
             </div>
           </div>
         </div>

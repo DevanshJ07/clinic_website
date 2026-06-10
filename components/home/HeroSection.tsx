@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b border-border/80 bg-home-hero bg-institutional-pattern">
       <div className="container-wide relative">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center py-14 md:py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center py-14 md:py-16 lg:py-20 pb-8 md:pb-10 lg:pb-12">
           <div className="flex flex-col gap-7 order-2 lg:order-1">
             <p className="eyebrow">Howrah · Est. {CLINIC.established}</p>
 

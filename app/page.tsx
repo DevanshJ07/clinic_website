@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
+import QuickActionsPanel from "@/components/home/QuickActionsPanel";
 import TrustStrip from "@/components/home/TrustStrip";
 import AboutPreviewSection from "@/components/home/AboutPreviewSection";
 import FacilitiesPreviewSection from "@/components/home/FacilitiesPreviewSection";
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <HeroSection />
+      <QuickActionsPanel />
       <TrustStrip />
       <AboutPreviewSection />
       <FacilitiesPreviewSection />

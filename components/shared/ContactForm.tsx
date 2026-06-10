@@ -10,13 +10,60 @@ type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      phone: String(data.get("phone") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      subject: String(data.get("subject") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+
+    if (!payload.name || !payload.phone || !payload.email || !payload.message) {
+      setErrorMessage("Please fill in all required fields.");
+      setState("error");
+      return;
+    }
+
     setState("submitting");
-    // Simulate async submit — replace with real API call
-    await new Promise((r) => setTimeout(r, 1200));
-    setState("success");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as {
+        error?: string;
+        success?: boolean;
+      };
+
+      if (!response.ok || !result.success) {
+        setErrorMessage(
+          result.error ??
+            "Unable to send your message. Please try again or call us directly."
+        );
+        setState("error");
+        return;
+      }
+
+      form.reset();
+      setState("success");
+    } catch {
+      setErrorMessage(
+        "Unable to send your message. Please check your connection or call us directly."
+      );
+      setState("error");
+    }
   }
 
   if (state === "success") {
@@ -39,7 +86,10 @@ export default function ContactForm() {
         </div>
         <button
           type="button"
-          onClick={() => setState("idle")}
+          onClick={() => {
+            setState("idle");
+            setErrorMessage("");
+          }}
           className="text-xs text-clinic-blue hover:underline mt-2"
         >
           Send another message
@@ -49,7 +99,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="name" className="text-xs font-semibold text-clinic-navy">
@@ -60,6 +110,7 @@ export default function ContactForm() {
             name="name"
             placeholder="Your full name"
             required
+            autoComplete="name"
             className="h-10 rounded-lg border-border focus-visible:border-clinic-blue focus-visible:ring-clinic-blue/20 text-sm"
           />
         </div>
@@ -73,6 +124,7 @@ export default function ContactForm() {
             type="tel"
             placeholder="+91 XXXXX XXXXX"
             required
+            autoComplete="tel"
             className="h-10 rounded-lg border-border focus-visible:border-clinic-blue focus-visible:ring-clinic-blue/20 text-sm"
           />
         </div>
@@ -80,13 +132,15 @@ export default function ContactForm() {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="email" className="text-xs font-semibold text-clinic-navy">
-          Email Address
+          Email Address <span className="text-destructive">*</span>
         </label>
         <Input
           id="email"
           name="email"
           type="email"
-          placeholder="your@email.com (optional)"
+          placeholder="your@email.com"
+          required
+          autoComplete="email"
           className="h-10 rounded-lg border-border focus-visible:border-clinic-blue focus-visible:ring-clinic-blue/20 text-sm"
         />
       </div>
@@ -116,6 +170,16 @@ export default function ContactForm() {
           className="rounded-lg border-border focus-visible:border-clinic-blue focus-visible:ring-clinic-blue/20 text-sm resize-none"
         />
       </div>
+
+      {state === "error" && errorMessage && (
+        <p
+          className="text-xs text-destructive text-center"
+          role="alert"
+          aria-live="polite"
+        >
+          {errorMessage}
+        </p>
+      )}
 
       <Button
         type="submit"

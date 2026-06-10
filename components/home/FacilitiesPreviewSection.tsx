@@ -42,6 +42,16 @@ export default function FacilitiesPreviewSection() {
             </Link>
           ))}
         </div>
+
+        <p className="mt-8 pt-8 border-t border-border/60 text-center">
+          <Link
+            href="/insurance-schemes"
+            className="inline-flex items-center gap-2 text-[13px] font-medium text-clinic-navy hover:text-clinic-blue transition-colors group"
+          >
+            Insurance &amp; government health schemes accepted
+            <ArrowRight className="w-3.5 h-3.5 stroke-[1.5] group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </p>
       </div>
     </section>
   );

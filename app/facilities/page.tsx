@@ -321,7 +321,7 @@ export default function FacilitiesPage() {
         <div className="container-wide flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <p className="font-display text-[1.25rem] font-medium text-clinic-navy">
-              Book a diagnostic service
+              Book Appointment
             </p>
             <p className="text-[13px] text-clinic-gray font-light mt-1 max-w-md">
               Call Medicare Diagnostic Centre &amp; OPD to schedule tests or
