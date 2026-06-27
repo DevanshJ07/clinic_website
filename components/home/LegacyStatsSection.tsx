@@ -1,4 +1,4 @@
-import { STATS } from "@/lib/data";
+import { STATS, COVID_VACCINATION } from "@/lib/data";
 
 export default function LegacyStatsSection() {
   return (
@@ -38,6 +38,22 @@ export default function LegacyStatsSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-px bg-border">
+          <div className="bg-background flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 p-8 md:p-10">
+            <p className="font-display text-[2.75rem] md:text-[3.25rem] font-medium leading-none tracking-[-0.03em] text-clinic-navy shrink-0">
+              {COVID_VACCINATION.value}
+            </p>
+            <div>
+              <p className="text-[15px] font-medium text-clinic-navy leading-snug">
+                {COVID_VACCINATION.label}
+              </p>
+              <p className="text-[13px] text-clinic-gray font-light mt-1 max-w-lg">
+                {COVID_VACCINATION.sub}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

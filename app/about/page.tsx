@@ -1,8 +1,9 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import AboutImageCarousel from "@/components/about/AboutImageCarousel";
-import { ABOUT_HISTORY, CLINIC } from "@/lib/data";
+import { ABOUT_HISTORY, CLINIC, COVID_VACCINATION } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -44,6 +45,47 @@ export default function AboutPage() {
             {/* Carousel — right on desktop, below content on mobile */}
             <div className="lg:sticky lg:top-24 flex justify-center lg:justify-end">
               <AboutImageCarousel />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 md:py-12 bg-home-trust border-b border-border/80">
+        <div className="container-wide">
+          <p className="eyebrow mb-6">Community Service</p>
+          <div className="grid lg:grid-cols-[1fr_minmax(240px,280px)] gap-8 lg:gap-12 items-center">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8">
+              <p className="font-display text-[3rem] md:text-[3.5rem] font-medium text-clinic-navy leading-none tracking-[-0.03em] shrink-0">
+                {COVID_VACCINATION.value}
+              </p>
+              <div className="flex flex-col gap-1.5">
+                <p className="text-[17px] md:text-[18px] font-medium text-clinic-navy leading-snug">
+                  {COVID_VACCINATION.label}
+                </p>
+                <p className="text-[14px] text-clinic-gray font-light leading-relaxed max-w-xl">
+                  {COVID_VACCINATION.sub}
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+                <Image
+                  src="/clinic/covid-vacc-camp.png"
+                  alt="Community members seated for post-vaccination observation at Medicare COVID vaccination camp"
+                  fill
+                  className="object-cover object-center"
+                  sizes="140px"
+                />
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+                <Image
+                  src="/clinic/covid-vacc-team.png"
+                  alt="Medicare healthcare team conducting COVID-19 Covishield vaccination service"
+                  fill
+                  className="object-cover object-center"
+                  sizes="140px"
+                />
+              </div>
             </div>
           </div>
         </div>

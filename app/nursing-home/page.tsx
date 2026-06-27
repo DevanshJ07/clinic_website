@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { Phone, Clock, ArrowRight } from "lucide-react";
-import ImagePlaceholder from "@/components/nursing-home/ImagePlaceholder";
 import {
   NURSING_HOME_TRUST,
   NURSING_HOME_ABOUT,
@@ -56,11 +55,16 @@ export default function NursingHomePage() {
                 </a>
               </div>
             </div>
-            <ImagePlaceholder
-              label="Nursing Home — image coming soon"
-              aspect="aspect-[5/4] lg:aspect-[4/3]"
-              className="shadow-sm shadow-clinic-navy/[0.04]"
-            />
+            <div className="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
+              <Image
+                src="/clinic/nursing-room.png"
+                alt="Medicare Nursing Home — patient room with hospital bed and modern amenities"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 90vw, 50vw"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -106,11 +110,15 @@ export default function NursingHomePage() {
                 ))}
               </div>
             </div>
-            <ImagePlaceholder
-              label="Patient care — image coming soon"
-              aspect="aspect-square"
-              className="hidden lg:block"
-            />
+            <div className="relative hidden lg:block aspect-square overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
+              <Image
+                src="/clinic/operating-room.png"
+                alt="Medicare Nursing Home — modern operation theatre and surgical facilities"
+                fill
+                className="object-cover object-center"
+                sizes="220px"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -119,11 +127,15 @@ export default function NursingHomePage() {
       <section className="py-10 md:py-12 bg-nursing-soft border-b border-border/80">
         <div className="container-wide">
           <div className="grid lg:grid-cols-[minmax(260px,1fr)_1.1fr] gap-8 lg:gap-10 items-start">
-            <ImagePlaceholder
-              label="Operation Theatre — image coming soon"
-              aspect="aspect-[4/5] lg:aspect-[3/4] lg:min-h-[360px]"
-              className="shadow-sm shadow-clinic-navy/[0.04] order-1 lg:order-none"
-            />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04] order-1 lg:order-none">
+              <Image
+                src="/clinic/ot-room.png"
+                alt="Medicare Nursing Home — modern operation theatre with surgical lights and ATHENA anesthesia workstation"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 90vw, 45vw"
+              />
+            </div>
 
             <div className="flex flex-col gap-6 order-2">
               <div>

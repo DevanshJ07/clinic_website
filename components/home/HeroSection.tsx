@@ -57,8 +57,8 @@ export default function HeroSection() {
             <div className="col-span-5 flex flex-col gap-3 md:gap-4">
               <div className="relative flex-1 min-h-[120px] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
                 <Image
-                  src="/clinic/ct-scanner.png"
-                  alt="Medicare diagnostic centre with CT scanner"
+                  src="/clinic/ct-scan-room.png"
+                  alt="Medicare CT scan room — GE Revolution ACT"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 38vw, 14vw"

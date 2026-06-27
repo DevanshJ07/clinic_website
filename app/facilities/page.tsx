@@ -55,13 +55,14 @@ export default function FacilitiesPage() {
                 ))}
               </div>
             </div>
-            <div className="relative hidden lg:block aspect-square w-[200px] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm">
+            <div className="relative hidden lg:block w-[220px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
               <Image
                 src="/clinic/lab-analyzer.png"
-                alt="Medicare diagnostic laboratory"
+                alt="Medicare NABL-accredited pathology laboratory — technician at diagnostic analyzer"
                 fill
                 className="object-cover object-center"
-                sizes="200px"
+                sizes="220px"
+                priority
               />
             </div>
           </div>
@@ -100,8 +101,8 @@ export default function FacilitiesPage() {
           </span>
         }
       >
-        <div className="grid lg:grid-cols-[1fr_160px] gap-5 lg:gap-8 mb-6">
-          <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 mb-6">
+          <div className="grid lg:grid-cols-[1fr_220px] gap-5 lg:gap-8 items-start">
             <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1">
               {PATHOLOGY_OVERVIEW.specialties.map((item) => (
                 <li
@@ -113,36 +114,36 @@ export default function FacilitiesPage() {
               ))}
             </ul>
 
-            <div className="grid sm:grid-cols-3 gap-2">
-              {PATHOLOGY_OVERVIEW.subServices.map((sub) => (
-                <div
-                  key={sub.title}
-                  className="rounded-sm border border-border/50 bg-white/50 px-3 py-2.5"
-                >
-                  <h4 className="text-[13px] font-medium text-clinic-navy mb-0.5">
-                    {sub.title}
-                  </h4>
-                  <p className="text-[11px] text-clinic-gray font-light leading-snug">
-                    {sub.description}
-                  </p>
-                </div>
-              ))}
+            <div className="relative hidden lg:block aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+              <Image
+                src={PATHOLOGY_OVERVIEW.image.src}
+                alt={PATHOLOGY_OVERVIEW.image.alt}
+                fill
+                className="object-cover object-center"
+                sizes="220px"
+              />
             </div>
-
-            <p className="text-[12px] text-clinic-gray font-light leading-snug">
-              {PATHOLOGY_OVERVIEW.features.join(" · ")}
-            </p>
           </div>
 
-          <div className="relative hidden lg:block aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-white/50">
-            <Image
-              src={PATHOLOGY_OVERVIEW.image.src}
-              alt={PATHOLOGY_OVERVIEW.image.alt}
-              fill
-              className="object-cover object-center"
-              sizes="160px"
-            />
+          <div className="grid sm:grid-cols-3 gap-2">
+            {PATHOLOGY_OVERVIEW.subServices.map((sub) => (
+              <div
+                key={sub.title}
+                className="rounded-sm border border-border/50 bg-white/50 px-3 py-2.5"
+              >
+                <h4 className="text-[13px] font-medium text-clinic-navy mb-0.5">
+                  {sub.title}
+                </h4>
+                <p className="text-[11px] text-clinic-gray font-light leading-snug">
+                  {sub.description}
+                </p>
+              </div>
+            ))}
           </div>
+
+          <p className="text-[12px] text-clinic-gray font-light leading-snug">
+            {PATHOLOGY_OVERVIEW.features.join(" · ")}
+          </p>
         </div>
 
         <div className="mb-6">
@@ -182,21 +183,32 @@ export default function FacilitiesPage() {
         intro={RADIOLOGY_INTRO}
         bg="bg-home-facilities"
         headerAside={
-          <div className="relative hidden md:block w-[140px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 lg:mt-4">
+          <div className="relative hidden md:block w-[160px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04] lg:mt-4">
             <Image
-              src="/clinic/xray-room.png"
-              alt="Medicare digital X-ray facility"
+              src="/clinic/xray-interior.png"
+              alt="Medicare digital X-ray room — GE 500mA equipment"
               fill
               className="object-cover object-center"
-              sizes="140px"
+              sizes="160px"
             />
           </div>
         }
       >
-        <div className={SERVICE_GRID}>
-          {RADIOLOGY_SERVICES.map((service) => (
-            <DiagnosticServiceCard key={service.id} {...service} />
-          ))}
+        <div className="grid lg:grid-cols-[1fr_200px] gap-5 lg:gap-8 items-start">
+          <div className={SERVICE_GRID}>
+            {RADIOLOGY_SERVICES.map((service) => (
+              <DiagnosticServiceCard key={service.id} {...service} />
+            ))}
+          </div>
+          <div className="relative hidden lg:block aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+            <Image
+              src="/clinic/ultrasound-room.png"
+              alt="Medicare ultrasound imaging room — GE Voluson P8"
+              fill
+              className="object-cover object-center"
+              sizes="200px"
+            />
+          </div>
         </div>
       </CategorySection>
 
@@ -249,10 +261,22 @@ export default function FacilitiesPage() {
         title="Pulmonary Diagnostics"
         bg="bg-home-about"
       >
-        <div className="max-w-sm">
-          {PULMONARY_SERVICES.map((service) => (
-            <DiagnosticServiceCard key={service.id} {...service} />
-          ))}
+        <div className="grid md:grid-cols-[1fr_160px] gap-4 md:gap-6 items-start">
+          <div className="max-w-sm">
+            {PULMONARY_SERVICES.map((service) => (
+              <DiagnosticServiceCard key={service.id} {...service} />
+            ))}
+          </div>
+          <div className="relative hidden md:block aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+            <Image
+              src="/clinic/uroflowmetry-room.png"
+              alt="Medicare uroflowmetry room"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 65%" }}
+              sizes="160px"
+            />
+          </div>
         </div>
       </CategorySection>
 
@@ -263,12 +287,24 @@ export default function FacilitiesPage() {
         title="Physiotherapy"
         bg="bg-home-trust"
       >
-        <div className="max-w-md">
-          <DiagnosticServiceCard
-            name={PHYSIOTHERAPY_SERVICES.name}
-            services={PHYSIOTHERAPY_SERVICES.services}
-            price={PHYSIOTHERAPY_SERVICES.price}
-          />
+        <div className="grid md:grid-cols-[1fr_200px] gap-4 md:gap-6 items-start">
+          <div className="max-w-md">
+            <DiagnosticServiceCard
+              name={PHYSIOTHERAPY_SERVICES.name}
+              services={PHYSIOTHERAPY_SERVICES.services}
+              price={PHYSIOTHERAPY_SERVICES.price}
+            />
+          </div>
+          <div className="relative hidden md:block aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
+            <Image
+              src="/clinic/physiotherapy-room.png"
+              alt="Medicare physiotherapy treatment room with electrotherapy equipment"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 70%" }}
+              sizes="200px"
+            />
+          </div>
         </div>
       </CategorySection>
 
@@ -279,20 +315,20 @@ export default function FacilitiesPage() {
         title="CT Scan"
         bg="bg-home-about"
       >
-        <div className="grid lg:grid-cols-[1fr_200px] gap-4 lg:gap-6 items-start">
+        <div className="grid lg:grid-cols-[1fr_240px] gap-4 lg:gap-8 items-start">
           <DiagnosticServiceCard
             name={CT_SCAN.name}
             description={CT_SCAN.description}
             machine={CT_SCAN.machine}
             price={CT_SCAN.price}
           />
-          <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden rounded-sm border border-border/60 bg-white/50">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
             <Image
               src={CT_SCAN.image.src}
               alt={CT_SCAN.image.alt}
               fill
               className="object-cover object-center"
-              sizes="200px"
+              sizes="240px"
             />
           </div>
         </div>
@@ -331,10 +367,10 @@ export default function FacilitiesPage() {
           <div className="flex flex-col sm:flex-row gap-2 shrink-0">
             <a
               href="tel:03340073713"
-              className="inline-flex items-center justify-center gap-2 text-[13px] font-medium text-white bg-clinic-navy px-5 py-3 hover:bg-clinic-navy/90 transition-colors"
+              className="btn-book-appointment px-5 py-3 gap-2"
             >
               <Phone className="w-4 h-4 stroke-[1.5]" />
-              {CLINIC.contact.diagnosticOpd}
+              Book Appointment
             </a>
             <Link
               href="/contact"

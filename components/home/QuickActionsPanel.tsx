@@ -17,6 +17,9 @@ const cardBase =
 const actionLink =
   "inline-flex items-center gap-1 text-[12px] font-medium text-clinic-navy group-hover:text-clinic-blue transition-colors mt-auto pt-1";
 
+const bookAppointmentCta =
+  "mt-auto inline-flex items-center justify-center gap-1.5 rounded-sm text-[12px] font-semibold text-white bg-[oklch(0.18_0.045_252)] px-3 py-2 w-full whitespace-nowrap shadow-sm shadow-clinic-navy/20";
+
 export default function QuickActionsPanel() {
   return (
     <section
@@ -35,9 +38,9 @@ export default function QuickActionsPanel() {
               <p className="text-[12px] text-clinic-gray font-light leading-relaxed flex-1">
                 Book tests and diagnostic services at Medicare.
               </p>
-              <span className={actionLink}>
+              <span className={bookAppointmentCta}>
                 Book Appointment
-                <ArrowRight className="w-3 h-3 stroke-[1.5] group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-3 h-3 stroke-[1.5]" />
               </span>
             </button>
           </BookAppointmentDialog>
@@ -67,9 +70,9 @@ export default function QuickActionsPanel() {
               <p className="text-[12px] text-clinic-gray font-light leading-relaxed flex-1">
                 Home blood collection facility available by trained collectors.
               </p>
-              <span className={actionLink}>
+              <span className={bookAppointmentCta}>
                 Book Appointment
-                <ArrowRight className="w-3 h-3 stroke-[1.5] group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-3 h-3 stroke-[1.5]" />
               </span>
             </button>
           </BookAppointmentDialog>

@@ -76,7 +76,7 @@ export default function DiagnosticServiceCard({
         )}
         <BookAppointmentDialog
           serviceName={bookingName ?? name}
-          className="text-[11px] px-2.5 py-1.5 shrink-0"
+          className="btn-book-appointment-sm shrink-0"
         />
       </div>
     </article>

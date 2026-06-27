@@ -53,8 +53,8 @@ export const PATHOLOGY_OVERVIEW = {
     },
   ],
   image: {
-    src: "/clinic/lab-samples.png",
-    alt: "Medicare NABL-accredited pathology laboratory",
+    src: "/clinic/pathology-wide.png",
+    alt: "Medicare NABL-accredited pathology laboratory with diagnostic analyzers",
   },
 };
 
@@ -181,8 +181,8 @@ export const CT_SCAN = {
   machine: "GE Revolution ACT",
   price: ENQUIRE_PRICE,
   image: {
-    src: "/clinic/ct-scanner.png",
-    alt: "Medicare CT scanner — GE Revolution ACT",
+    src: "/clinic/ct-scan-room.png",
+    alt: "Medicare CT scan room — GE Revolution ACT scanner",
   },
 };
 

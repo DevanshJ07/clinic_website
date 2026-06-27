@@ -93,6 +93,12 @@ export const STATS = [
   },
 ];
 
+export const COVID_VACCINATION = {
+  value: "30,000+",
+  label: "COVID-19 Vaccinations Administered",
+  sub: "Supporting the community during the pandemic through Covishield vaccination services.",
+};
+
 export const CERTIFICATIONS = [
   {
     id: "nabh",
@@ -116,38 +122,43 @@ export const CERTIFICATIONS = [
   },
 ];
 
+// Image registry — each image is assigned a primary page/section to avoid repetition.
+// Home hero: reception-nabh, ct-scan-room, waiting-area
+// About carousel: the 8 images below (all unique sections)
+// Facilities: xray-interior, pathology-wide, ultrasound-room, physiotherapy-room, phlebotomy-room, uroflowmetry-room, ct-scan-room
+// Nursing Home: operating-room, pharmacy
 export const CLINIC_IMAGES = [
   {
     src: "/clinic/reception-nabh.png",
-    alt: "Medicare reception with NABH accreditation certificates",
+    alt: "Medicare clinic reception with NABH accreditation",
   },
   {
-    src: "/clinic/lab-analyzer.png",
-    alt: "Medicare NABL laboratory — technician at diagnostic analyzer",
+    src: "/clinic/pathology-wide.png",
+    alt: "Medicare NABL-accredited pathology laboratory with diagnostic analyzers",
   },
   {
-    src: "/clinic/lab-samples.png",
-    alt: "Medicare pathology laboratory with blood sample collection",
+    src: "/clinic/ultrasound-room.png",
+    alt: "Medicare ultrasound and colour Doppler imaging room",
   },
   {
-    src: "/clinic/ct-scanner.png",
-    alt: "Medicare diagnostic centre with CT scanner",
+    src: "/clinic/ct-scan-room.png",
+    alt: "Medicare CT scan room with GE multi-slice scanner",
   },
   {
-    src: "/clinic/xray-room.png",
-    alt: "Medicare digital X-ray facility",
+    src: "/clinic/xray-interior.png",
+    alt: "Medicare digital X-ray room",
+  },
+  {
+    src: "/clinic/physiotherapy-room.png",
+    alt: "Medicare physiotherapy treatment room",
+  },
+  {
+    src: "/clinic/operating-room.png",
+    alt: "Medicare nursing home operation theatre",
   },
   {
     src: "/clinic/waiting-area.png",
     alt: "Medicare clinic waiting area",
-  },
-  {
-    src: "/clinic/operating-room.png",
-    alt: "Medicare nursing home operating room",
-  },
-  {
-    src: "/clinic/reception-team.png",
-    alt: "Medicare clinical team at reception",
   },
 ];
 

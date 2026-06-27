@@ -213,6 +213,14 @@
     @apply text-xl font-medium text-clinic-navy hover:text-clinic-blue transition-colors tracking-tight;
   }
 
+  .btn-book-appointment {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-sm text-[13px] font-semibold text-white bg-[oklch(0.18_0.045_252)] px-4 py-2.5 whitespace-nowrap cursor-pointer shadow-sm shadow-clinic-navy/20 transition-all duration-200 hover:bg-clinic-navy hover:shadow-md hover:shadow-clinic-navy/25 active:scale-[0.99];
+  }
+
+  .btn-book-appointment-sm {
+    @apply text-[12px] px-3 py-2;
+  }
+
   /* Layered section backgrounds — gradients + depth, pattern via ::before */
   .bg-home-hero {
     background-color: oklch(0.976 0.014 248);
