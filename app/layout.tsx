@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Medicare Howrah",
   },
   description:
-    "Medicare — over 37 years of trusted healthcare in Howrah. NABH-certified nursing home, NABL-accredited laboratory, and comprehensive care under one roof.",
+    "Medicare — over 37 years of trusted healthcare in Howrah. NABH-certified Nursing Home, NABL-accredited laboratory, and comprehensive care under one roof.",
   keywords: [
     "Medicare Howrah",
     "medical clinic Howrah",

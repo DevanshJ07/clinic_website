@@ -45,7 +45,7 @@ export default function BookAppointmentDialog({
           <DialogTitle className="font-display text-xl font-medium text-clinic-navy">
             Book Appointment
           </DialogTitle>
-          <DialogDescription className="text-[14px] text-clinic-gray font-light leading-relaxed">
+          <DialogDescription className="text-[14px] text-clinic-gray font-normal leading-relaxed">
             To book{" "}
             <span className="text-clinic-navy font-normal">{serviceName}</span>,
             please call Medicare Diagnostic Centre &amp; OPD at{" "}

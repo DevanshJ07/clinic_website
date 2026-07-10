@@ -22,7 +22,7 @@ export default function HeroSection() {
 
             <p className="text-[16px] md:text-[17px] text-clinic-gray font-light leading-[1.75] max-w-md">
               A pioneer in modern diagnostic facilities in Howrah since 1988
-              — with NABH-certified nursing home and NABL-accredited laboratory
+              — with NABH-certified Nursing Home and NABL-accredited laboratory
               care under one roof.
             </p>
 

@@ -70,7 +70,7 @@
   --secondary: oklch(0.965 0.008 248);
   --secondary-foreground: oklch(0.38 0.08 252);
   --muted: oklch(0.965 0.006 248);
-  --muted-foreground: oklch(0.48 0.02 248);
+  --muted-foreground: oklch(0.32 0.032 252);
   --accent: oklch(0.96 0.012 152);
   --accent-foreground: oklch(0.28 0.06 155);
   --destructive: oklch(0.577 0.245 27.325);
@@ -93,7 +93,7 @@
   --clinic-green: oklch(0.48 0.08 155);
   --clinic-green-light: oklch(0.72 0.06 155);
   --clinic-navy: oklch(0.22 0.05 252);
-  --clinic-gray: oklch(0.48 0.02 248);
+  --clinic-gray: oklch(0.32 0.032 252);
   --clinic-paper: oklch(0.985 0.004 90);
   --clinic-warm: oklch(0.975 0.008 85);
 }
@@ -103,7 +103,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-normal;
   }
   html {
     @apply font-sans;
@@ -200,10 +200,22 @@
     @apply h-px w-12 bg-clinic-navy/20;
   }
   .eyebrow {
-    @apply text-[11px] font-medium uppercase tracking-[0.22em] text-clinic-gray;
+    @apply text-[11px] font-medium uppercase tracking-[0.22em] text-clinic-gray/90;
   }
   .lead {
-    @apply text-lg md:text-xl text-clinic-navy/75 leading-relaxed font-light;
+    @apply text-lg md:text-xl text-clinic-navy/85 leading-relaxed font-normal;
+  }
+  .body-text {
+    @apply text-clinic-gray font-normal leading-relaxed;
+  }
+  .text-label {
+    @apply text-[10px] font-semibold uppercase tracking-[0.14em] text-clinic-navy/70;
+  }
+  .text-note {
+    @apply text-[13px] font-medium text-clinic-navy/80 leading-relaxed;
+  }
+  .text-service-body {
+    @apply text-[12px] font-normal leading-relaxed text-clinic-navy/75;
   }
   .link-underline {
     @apply text-clinic-navy underline underline-offset-4 decoration-clinic-navy/25 hover:decoration-clinic-navy/60 transition-colors;
@@ -219,6 +231,10 @@
 
   .btn-book-appointment-sm {
     @apply text-[12px] px-3 py-2;
+  }
+
+  .font-light {
+    font-weight: 400;
   }
 
   /* Layered section backgrounds — gradients + depth, pattern via ::before */

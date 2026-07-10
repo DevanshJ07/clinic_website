@@ -14,11 +14,6 @@ export const GOVERNMENT_SCHEMES = [
     shortName: "AB-PMJAY",
     featured: true,
   },
-  {
-    id: "swasthya-sathi",
-    name: "Swasthya Sathi",
-    featured: false,
-  },
 ];
 
 export const INSURANCE_PARTNERS = [

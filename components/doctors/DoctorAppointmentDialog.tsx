@@ -39,7 +39,7 @@ export default function DoctorAppointmentDialog({
           <DialogTitle className="font-display text-xl font-medium text-clinic-navy">
             Book Appointment
           </DialogTitle>
-          <DialogDescription className="text-[14px] text-clinic-gray font-light leading-relaxed">
+          <DialogDescription className="text-[14px] text-clinic-gray font-normal leading-relaxed">
             To book an appointment with{" "}
             <span className="text-clinic-navy font-normal">{doctorName}</span>,
             please call Medicare Diagnostic Centre &amp; OPD at{" "}
@@ -53,7 +53,7 @@ export default function DoctorAppointmentDialog({
           <Phone className="w-4 h-4 stroke-[1.5]" />
           Call {phone}
         </a>
-        <p className="text-[12px] text-clinic-gray font-light leading-relaxed text-center">
+        <p className="text-[12px] text-clinic-gray font-normal leading-relaxed text-center">
           {DOCTORS_AVAILABILITY_NOTE}
         </p>
       </DialogContent>

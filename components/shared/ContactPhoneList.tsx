@@ -24,13 +24,18 @@ export default function ContactPhoneList({
           <dd>
             <a
               href={`tel:${line.tel}`}
-              className={cn("contact-phone-link", linkClassName)}
+              className={cn(
+                line.id === "nursing-home"
+                  ? "text-[15px] md:text-[16px] font-medium text-clinic-navy hover:text-clinic-blue transition-colors tracking-tight leading-snug"
+                  : "contact-phone-link",
+                linkClassName
+              )}
             >
               {line.phone}
             </a>
           </dd>
           {showDetail && line.detail && (
-            <dd className="text-[13px] text-clinic-gray font-light mt-1">
+            <dd className="text-[13px] text-clinic-gray font-normal mt-1">
               {line.detail}
             </dd>
           )}

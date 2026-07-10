@@ -56,7 +56,7 @@ export default function ContactSection() {
                 href="/contact"
                 className="text-center text-[14px] font-medium text-clinic-navy border border-border/80 bg-white/70 px-6 py-3.5 hover:border-clinic-navy/30 transition-colors"
               >
-                Contact form
+                Contact details
               </Link>
             </div>
           </div>

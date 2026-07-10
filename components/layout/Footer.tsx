@@ -6,6 +6,7 @@ import {
   Clock,
 } from "lucide-react";
 import { CLINIC, NAV_LINKS, CONTACT_LINES } from "@/lib/data";
+import { cn } from "@/lib/utils";
 
 const FACILITY_LINKS = [
   { label: "General Medicine", href: "/facilities#general-medicine" },
@@ -105,7 +106,10 @@ export default function Footer() {
                     </p>
                     <a
                       href={`tel:${line.tel}`}
-                      className="text-sm text-white/65 hover:text-white transition-colors"
+                      className={cn(
+                        "text-sm text-white/65 hover:text-white transition-colors",
+                        line.id === "nursing-home" && "leading-snug"
+                      )}
                     >
                       {line.phone}
                     </a>

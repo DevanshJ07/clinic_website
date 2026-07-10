@@ -12,18 +12,14 @@ import { cn } from "@/lib/utils";
 export default function DoctorsDirectory() {
   const [activeFilter, setActiveFilter] = useState<DoctorFilterId>("all");
 
-  const featuredDoctor = MEDICARE_DOCTORS.find((d) => d.featured);
-  const otherDoctors = MEDICARE_DOCTORS.filter((d) => !d.featured);
+  const displayedDoctors = useMemo(() => {
+    const list =
+      activeFilter === "all"
+        ? MEDICARE_DOCTORS
+        : MEDICARE_DOCTORS.filter((d) => d.filterTags.includes(activeFilter));
 
-  const filteredDoctors = useMemo(() => {
-    if (activeFilter === "all") return otherDoctors;
-    return otherDoctors.filter((d) => d.filterTags.includes(activeFilter));
-  }, [activeFilter, otherDoctors]);
-
-  const showFeatured =
-    featuredDoctor &&
-    (activeFilter === "all" ||
-      featuredDoctor.filterTags.includes(activeFilter));
+    return [...list].sort((a, b) => Number(b.featured) - Number(a.featured));
+  }, [activeFilter]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -37,10 +33,10 @@ export default function DoctorsDirectory() {
             type="button"
             onClick={() => setActiveFilter(tag.id)}
             className={cn(
-              "text-[12px] font-medium px-3 py-1.5 border transition-colors",
+              "border px-3 py-1.5 text-[12px] font-medium transition-colors",
               activeFilter === tag.id
                 ? "border-clinic-navy/30 bg-clinic-navy text-white"
-                : "border-border/60 bg-white/60 text-clinic-gray hover:text-clinic-navy hover:border-clinic-navy/20"
+                : "border-border/60 bg-white/60 text-clinic-gray hover:border-clinic-navy/20 hover:text-clinic-navy"
             )}
           >
             {tag.label}
@@ -48,22 +44,16 @@ export default function DoctorsDirectory() {
         ))}
       </nav>
 
-      {showFeatured && featuredDoctor && (
-        <DoctorCard doctor={featuredDoctor} featured />
-      )}
-
-      {filteredDoctors.length > 0 ? (
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">
-          {filteredDoctors.map((doctor) => (
+      {displayedDoctors.length > 0 ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:gap-5 xl:grid-cols-3">
+          {displayedDoctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
       ) : (
-        !showFeatured && (
-          <p className="text-[14px] text-clinic-gray font-light py-8 text-center">
-            No doctors listed for this speciality. Please call to enquire.
-          </p>
-        )
+        <p className="py-8 text-center text-[14px] font-normal text-clinic-gray">
+          No doctors listed for this speciality. Please call to enquire.
+        </p>
       )}
     </div>
   );

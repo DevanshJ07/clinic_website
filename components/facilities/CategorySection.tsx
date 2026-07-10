@@ -41,11 +41,11 @@ export default function CategorySection({
         >
           <div>
             <p className="eyebrow mb-2">{eyebrow}</p>
-            <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-medium text-clinic-navy leading-tight">
+            <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-semibold text-clinic-navy leading-tight">
               {title}
             </h2>
             {intro && (
-              <p className="text-[13px] text-clinic-gray font-light leading-relaxed mt-2 max-w-2xl">
+              <p className="text-[13px] font-normal leading-relaxed text-clinic-navy/75 mt-2 max-w-2xl">
                 {intro}
               </p>
             )}

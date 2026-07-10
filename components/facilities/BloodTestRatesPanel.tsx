@@ -12,7 +12,7 @@ export default function BloodTestRatesPanel({
   return (
     <div className="flex flex-col gap-4">
       <div className="rounded-sm border border-border/60 overflow-hidden bg-white/60">
-        <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 px-3 py-2 bg-clinic-blue-50/80 border-b border-border/60 text-[10px] font-medium uppercase tracking-[0.14em] text-clinic-gray">
+        <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 px-3 py-2 bg-clinic-blue-50/80 border-b border-border/60 text-label">
           <span>Test</span>
           <span className="text-right w-14">Rate</span>
           <span className="whitespace-nowrap pl-1">Book Appointment</span>
@@ -23,7 +23,7 @@ export default function BloodTestRatesPanel({
               key={test.name}
               className="grid grid-cols-[1fr_auto_auto] gap-x-3 items-center px-3 py-2.5 hover:bg-clinic-warm/30 transition-colors"
             >
-              <span className="text-[13px] text-clinic-navy font-light min-w-0 truncate pr-2">
+              <span className="text-[13px] font-normal text-clinic-navy min-w-0 truncate pr-2">
                 {test.name}
               </span>
               <span className="font-display text-[15px] font-medium text-clinic-navy text-right w-14 tabular-nums shrink-0">
@@ -41,7 +41,7 @@ export default function BloodTestRatesPanel({
         </ul>
       </div>
 
-      <p className="text-[13px] text-clinic-gray font-light leading-relaxed border-l-2 border-clinic-navy/15 pl-4">
+      <p className="text-note border-l-2 border-clinic-navy/25 pl-4">
         {extendedNote}
       </p>
     </div>

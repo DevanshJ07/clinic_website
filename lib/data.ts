@@ -21,7 +21,9 @@ export const CLINIC = {
   contact: {
     helpline: "9331076661",
     diagnosticOpd: "033-40073713",
-    nursingHome: "033-2638-1777",
+    nursingHome:
+      "033-2638-1777 / 033-2638-1778 / 033-2638-1788 / 033-2638-9237",
+    nursingHomeTel: "03326381777",
     email: "medicareclinic@hotmail.com",
   },
   timings: {
@@ -107,7 +109,7 @@ export const CERTIFICATIONS = [
       "National Accreditation Board for Hospitals & Healthcare Providers",
     appliesTo: "Nursing Home",
     description:
-      "Our nursing home meets nationally recognised standards for patient safety, clinical quality, and compassionate inpatient care.",
+      "Our Nursing Home meets nationally recognised standards for patient safety, clinical quality, and compassionate inpatient care.",
     accent: "blue" as const,
   },
   {
@@ -124,7 +126,7 @@ export const CERTIFICATIONS = [
 
 // Image registry — each image is assigned a primary page/section to avoid repetition.
 // Home hero: reception-nabh, ct-scan-room, waiting-area
-// About carousel: the 8 images below (all unique sections)
+// About carousel: reception-desk (new), reception-nabh, pathology-wide, ultrasound-room, ct-scan-room, xray-interior, operating-room, waiting-area
 // Facilities: xray-interior, pathology-wide, ultrasound-room, physiotherapy-room, phlebotomy-room, uroflowmetry-room, ct-scan-room
 // Nursing Home: operating-room, pharmacy
 export const CLINIC_IMAGES = [
@@ -149,12 +151,12 @@ export const CLINIC_IMAGES = [
     alt: "Medicare digital X-ray room",
   },
   {
-    src: "/clinic/physiotherapy-room.png",
-    alt: "Medicare physiotherapy treatment room",
+    src: "/clinic/reception-desk.png",
+    alt: "Medicare clinic reception — staff at the front desk",
   },
   {
     src: "/clinic/operating-room.png",
-    alt: "Medicare nursing home operation theatre",
+    alt: "Medicare Nursing Home operation theatre",
   },
   {
     src: "/clinic/waiting-area.png",
@@ -164,7 +166,7 @@ export const CLINIC_IMAGES = [
 
 export const ABOUT_HISTORY = [
   "Medicare was started by two qualified eminent doctors in 1988 after noticing the lack of modern diagnostic and treatment facilities in Howrah. The idea of Medicare, a modern diagnostic cum nursing room with all facilities under one roof, was conceptualized from this need.",
-  "Medicare has been a pioneer in bringing modern diagnostic facilities to Howrah since 1988 and offers diagnostic services, specialist doctor consultations, treatments, and nursing home facilities under one roof.",
+  "Medicare has been a pioneer in bringing modern diagnostic facilities to Howrah since 1988 and offers diagnostic services, specialist doctor consultations, treatments, and Nursing Home facilities under one roof.",
   "Medicare has earned the trust of thousands of doctors and patients for dependable treatment and care at cost-effective rates.",
 ];
 
@@ -251,7 +253,7 @@ export const WHY_US = [
   {
     icon: "BadgeCheck",
     title: "NABH & NABL Accredited",
-    desc: "Nationally accredited nursing home and laboratory — a mark of quality, safety, and clinical excellence you can verify and trust.",
+    desc: "Nationally accredited Nursing Home and laboratory — a mark of quality, safety, and clinical excellence you can verify and trust.",
   },
   {
     icon: "Award",
@@ -261,7 +263,7 @@ export const WHY_US = [
   {
     icon: "Building2",
     title: "All-Under-One-Roof",
-    desc: "Diagnostics, specialist OPD, and nursing home care — comprehensive healthcare in one trusted, accessible location.",
+    desc: "Diagnostics, specialist OPD, and Nursing Home care — comprehensive healthcare in one trusted, accessible location.",
   },
   {
     icon: "Users",
@@ -271,7 +273,7 @@ export const WHY_US = [
   {
     icon: "Building2",
     title: "Nursing Home — 24 Hours",
-    desc: "NABH-certified nursing home facilities, open around the clock.",
+    desc: "NABH-certified Nursing Home facilities, open around the clock.",
   },
   {
     icon: "HeartHandshake",
@@ -360,6 +362,6 @@ export const CONTACT_LINES = [
     label: "Nursing Home (24 hrs)",
     detail: "Open 24 hours",
     phone: CLINIC.contact.nursingHome,
-    tel: "03326381777",
+    tel: CLINIC.contact.nursingHomeTel,
   },
 ];

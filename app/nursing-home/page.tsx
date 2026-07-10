@@ -41,11 +41,16 @@ export default function NursingHomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
                 <a
-                  href={`tel:03326381777`}
+                  href={`tel:${CLINIC.contact.nursingHomeTel}`}
                   className="inline-flex items-center justify-center gap-2 text-[14px] font-medium text-white bg-clinic-navy px-6 py-3.5 hover:bg-clinic-navy/90 transition-colors"
                 >
-                  <Phone className="w-4 h-4 stroke-[1.5]" />
-                  Nursing Home · {CLINIC.contact.nursingHome}
+                  <Phone className="w-4 h-4 stroke-[1.5] shrink-0" />
+                  <span className="text-left leading-snug">
+                    <span className="block">Nursing Home</span>
+                    <span className="block text-[12px] font-light opacity-90">
+                      {CLINIC.contact.nursingHome}
+                    </span>
+                  </span>
                 </a>
                 <a
                   href={`tel:${CLINIC.contact.helpline}`}
@@ -57,8 +62,8 @@ export default function NursingHomePage() {
             </div>
             <div className="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
               <Image
-                src="/clinic/nursing-room.png"
-                alt="Medicare Nursing Home — patient room with hospital bed and modern amenities"
+                src="/clinic/nursing-patient-room.png"
+                alt="Medicare Nursing Home — single accommodation with hospital bed and piped oxygen facility"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 90vw, 50vw"
@@ -110,13 +115,13 @@ export default function NursingHomePage() {
                 ))}
               </div>
             </div>
-            <div className="relative hidden lg:block aspect-square overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
+            <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
               <Image
-                src="/clinic/operating-room.png"
-                alt="Medicare Nursing Home — modern operation theatre and surgical facilities"
+                src="/clinic/indoor-reception.png"
+                alt="Medicare Nursing Home — indoor reception desk with staff"
                 fill
-                className="object-cover object-center"
-                sizes="220px"
+                className="object-cover object-[center_35%]"
+                sizes="(max-width: 1024px) 100vw, 220px"
               />
             </div>
           </div>
@@ -231,11 +236,16 @@ export default function NursingHomePage() {
               </p>
             </div>
             <a
-              href="tel:03326381777"
+              href={`tel:${CLINIC.contact.nursingHomeTel}`}
               className="inline-flex items-center justify-center gap-2 text-[14px] font-medium text-white bg-clinic-navy px-6 py-3.5 hover:bg-clinic-navy/90 transition-colors shrink-0 w-full lg:w-auto"
             >
-              <Phone className="w-4 h-4 stroke-[1.5]" />
-              {CLINIC.contact.nursingHome}
+              <Phone className="w-4 h-4 stroke-[1.5] shrink-0" />
+              <span className="text-left leading-snug">
+                <span className="block">Nursing Home</span>
+                <span className="block text-[12px] font-light opacity-90">
+                  {CLINIC.contact.nursingHome}
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -286,11 +296,16 @@ export default function NursingHomePage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-2 shrink-0">
             <a
-              href="tel:03326381777"
+              href={`tel:${CLINIC.contact.nursingHomeTel}`}
               className="inline-flex items-center justify-center gap-2 text-[13px] font-medium text-white bg-clinic-navy px-5 py-3 hover:bg-clinic-navy/90 transition-colors"
             >
-              <Phone className="w-4 h-4 stroke-[1.5]" />
-              {CLINIC.contact.nursingHome}
+              <Phone className="w-4 h-4 stroke-[1.5] shrink-0" />
+              <span className="text-left leading-snug">
+                <span className="block">Nursing Home</span>
+                <span className="block text-[11px] font-light opacity-90">
+                  {CLINIC.contact.nursingHome}
+                </span>
+              </span>
             </a>
             <Link
               href="/contact"

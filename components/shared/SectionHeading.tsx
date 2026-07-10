@@ -51,7 +51,7 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            "text-[15px] md:text-base leading-[1.7] font-light",
+            "text-[15px] md:text-base leading-[1.7] font-normal",
             light ? "text-white/65" : "text-clinic-gray",
             centered && "mx-auto"
           )}

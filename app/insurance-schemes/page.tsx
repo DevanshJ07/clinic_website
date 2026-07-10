@@ -13,7 +13,7 @@ import { CLINIC } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Insurance & Health Schemes",
   description:
-    "Medicare accepts Ayushman Bharat (AB-PMJAY), Swasthya Sathi, and cashless mediclaim from leading insurance providers and TPAs in Howrah.",
+    "Medicare accepts Ayushman Bharat (AB-PMJAY) and cashless mediclaim from leading insurance providers and TPAs in Howrah.",
 };
 
 export default function InsuranceSchemesPage() {
@@ -26,7 +26,7 @@ export default function InsuranceSchemesPage() {
           <h1 className="font-display text-[2rem] md:text-[2.5rem] font-semibold text-clinic-navy leading-tight mb-3 max-w-3xl">
             {INSURANCE_HERO.title}
           </h1>
-          <p className="text-[15px] text-clinic-gray font-light leading-relaxed max-w-2xl">
+          <p className="text-[15px] font-normal leading-relaxed text-clinic-navy/80 max-w-2xl">
             {INSURANCE_HERO.subtitle}
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function InsuranceSchemesPage() {
         <div className="container-wide">
           <div className="flex items-center gap-2 mb-6">
             <Building2 className="w-4 h-4 text-clinic-navy/70 stroke-[1.5]" />
-            <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-medium text-clinic-navy">
+            <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-semibold text-clinic-navy">
               Government Health Schemes Accepted
             </h2>
           </div>
@@ -52,7 +52,7 @@ export default function InsuranceSchemesPage() {
                   <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-clinic-green mb-2">
                     Accepted scheme
                   </p>
-                  <h3 className="font-display text-[1.125rem] md:text-[1.25rem] font-medium text-clinic-navy leading-snug mb-1">
+                  <h3 className="font-display text-[1.125rem] md:text-[1.25rem] font-semibold text-clinic-navy leading-snug mb-1">
                     {scheme.name}
                   </h3>
                   <p className="text-[13px] font-medium text-clinic-navy/80">
@@ -64,10 +64,10 @@ export default function InsuranceSchemesPage() {
                   key={scheme.id}
                   className="rounded-sm border border-border/60 bg-white/70 p-6 md:p-7 shadow-sm shadow-clinic-navy/[0.02]"
                 >
-                  <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-clinic-gray mb-2">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-clinic-navy/65 mb-2">
                     Accepted scheme
                   </p>
-                  <h3 className="font-display text-[1.0625rem] font-medium text-clinic-navy leading-snug">
+                  <h3 className="font-display text-[1.0625rem] font-semibold text-clinic-navy leading-snug">
                     {scheme.name}
                   </h3>
                 </article>
@@ -75,7 +75,7 @@ export default function InsuranceSchemesPage() {
             )}
           </div>
 
-          <p className="text-[13px] text-clinic-gray font-light border-l-2 border-clinic-navy/15 pl-4 max-w-2xl">
+          <p className="text-note border-l-2 border-clinic-navy/25 pl-4 max-w-2xl">
             {SCHEME_NOTE}
           </p>
         </div>
@@ -87,11 +87,11 @@ export default function InsuranceSchemesPage() {
           <div className="mb-6 max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <Shield className="w-4 h-4 text-clinic-navy/70 stroke-[1.5]" />
-              <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-medium text-clinic-navy">
+              <h2 className="font-display text-[1.375rem] md:text-[1.625rem] font-semibold text-clinic-navy">
                 Cashless Insurance &amp; Mediclaim Partners
               </h2>
             </div>
-            <p className="text-[14px] text-clinic-gray font-light leading-relaxed">
+            <p className="text-[14px] font-normal leading-relaxed text-clinic-navy/80">
               {INSURANCE_PARTNERS_INTRO}
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function InsuranceSchemesPage() {
             {INSURANCE_PARTNERS.map((partner) => (
               <li
                 key={partner}
-                className="rounded-sm border border-border/50 bg-white/60 px-3.5 py-3 text-[12px] text-clinic-navy font-light leading-snug hover:bg-white hover:border-border/80 transition-colors"
+                className="rounded-sm border border-border/50 bg-white/60 px-3.5 py-3 text-[12px] font-normal text-clinic-navy leading-snug hover:bg-white hover:border-border/80 transition-colors"
               >
                 {partner}
               </li>
@@ -123,22 +123,22 @@ export default function InsuranceSchemesPage() {
             >
               <Phone className="w-4 h-4 stroke-[1.5] text-clinic-gray" />
               <span>
-                <span className="block text-[10px] uppercase tracking-[0.14em] text-clinic-gray mb-0.5">
+                <span className="block text-label mb-0.5">
                   24×7 Helpline
                 </span>
                 {CLINIC.contact.helpline}
               </span>
             </a>
             <a
-              href="tel:03326381777"
+              href={`tel:${CLINIC.contact.nursingHomeTel}`}
               className="inline-flex items-center gap-2 rounded-sm border border-border/60 bg-white/70 px-5 py-3 text-[14px] text-clinic-navy hover:border-clinic-navy/25 transition-colors"
             >
-              <Phone className="w-4 h-4 stroke-[1.5] text-clinic-gray" />
+              <Phone className="w-4 h-4 stroke-[1.5] text-clinic-gray shrink-0" />
               <span>
-                <span className="block text-[10px] uppercase tracking-[0.14em] text-clinic-gray mb-0.5">
+                <span className="block text-label mb-0.5">
                   Nursing Home
                 </span>
-                {CLINIC.contact.nursingHome}
+                <span className="leading-snug">{CLINIC.contact.nursingHome}</span>
               </span>
             </a>
           </div>

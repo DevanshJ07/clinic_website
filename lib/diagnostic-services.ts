@@ -3,7 +3,7 @@ export const DIAGNOSTIC_INTRO = [
   "Stringent protocols, modern infrastructure, and skilled technicians, pathologists, and support staff ensure dependable service.",
 ];
 
-export const ENQUIRE_PRICE = "Please call to enquire about pricing.";
+export const ENQUIRE_PRICE = "Please call to enquire";
 
 export const PATHOLOGY_EXTENDED_NOTE =
   "Medicare offers a comprehensive range of pathology and laboratory investigations beyond the commonly listed tests. Please contact Medicare Diagnostic Centre for complete test availability and pricing.";
@@ -11,19 +11,6 @@ export const PATHOLOGY_EXTENDED_NOTE =
 export const PATHOLOGY_OVERVIEW = {
   title: "Pathology Laboratory Services",
   nabl: "NABL certified Pathology Laboratory",
-  specialties: [
-    "Routine, specialized, and esoteric tests",
-    "Clinical chemistry",
-    "Clinical microbiology",
-    "Cytogenetics",
-    "Dermatopathology",
-    "Gastrointestinal pathology",
-    "Oncology",
-    "Hematology",
-    "Molecular diagnostics",
-    "Surgical pathology",
-    "Quality controls and continuous process improvement",
-  ],
   subServices: [
     { title: "Hematology", description: "Blood tests including CBC" },
     {
@@ -108,7 +95,7 @@ export const CARDIOLOGY_SERVICES = [
     id: "ecg",
     name: "ECG",
     description: "Examines the electrical activity of the heart.",
-    price: "₹150",
+    price: ENQUIRE_PRICE,
   },
   {
     id: "tmt",
@@ -121,7 +108,7 @@ export const CARDIOLOGY_SERVICES = [
     name: "2D Echo / Cardiac Echo Doppler / Arterial and Venous Doppler of Limbs",
     description: "Heart and vascular ultrasound imaging.",
     machine: "GE Voluson P8",
-    price: "₹1200",
+    price: ENQUIRE_PRICE,
   },
   {
     id: "holter",
@@ -157,7 +144,7 @@ export const PULMONARY_SERVICES = [
     id: "spirometry",
     name: "Spirometry / Pulmonary Function Test",
     description: "Lung capacity and gas exchange assessment.",
-    price: "₹550",
+    price: ENQUIRE_PRICE,
   },
 ];
 
@@ -179,12 +166,30 @@ export const CT_SCAN = {
   description:
     "Cross-sectional imaging of bones, vessels, and soft tissues — greater detail than standard X-ray.",
   machine: "GE Revolution ACT",
-  price: ENQUIRE_PRICE,
   image: {
     src: "/clinic/ct-scan-room.png",
     alt: "Medicare CT scan room — GE Revolution ACT scanner",
   },
 };
+
+export const CT_SCAN_RATES = [
+  { name: "Brain", price: "₹1500" },
+  { name: "PNS", price: "₹2600" },
+  { name: "HRCT Temporal Bone", price: "₹2600" },
+  { name: "Neck", price: "₹2600" },
+  { name: "HRCT Thorax", price: "₹3500" },
+  { name: "Chest", price: "₹2600" },
+  { name: "Whole Abdomen", price: "₹5000" },
+  { name: "Upper Abdomen", price: "₹2700" },
+  { name: "N.C.C.T. KUB", price: "₹3100" },
+  { name: "Urogram", price: "₹3100" },
+];
+
+export const CT_SCAN_CONTRAST_CHARGES = [
+  { name: "Brain contrast", price: "₹1000" },
+  { name: "Whole Abdomen contrast", price: "₹2200" },
+  { name: "Other body parts contrast", price: "₹1800" },
+];
 
 export const OPD_TREATMENT = {
   id: "opd-treatment",

@@ -35,7 +35,7 @@ export default function DiagnosticServiceCard({
       <div className="flex flex-col gap-1.5 flex-1 min-w-0">
         <h3
           className={cn(
-            "font-display font-medium text-clinic-navy leading-snug",
+            "font-display font-semibold text-clinic-navy leading-snug",
             compact ? "text-[14px]" : "text-[15px]"
           )}
         >
@@ -43,22 +43,16 @@ export default function DiagnosticServiceCard({
         </h3>
 
         {description && (
-          <p className="text-[12px] text-clinic-gray font-light leading-relaxed">
-            {description}
-          </p>
+          <p className="text-service-body">{description}</p>
         )}
 
         {services && services.length > 0 && (
-          <p className="text-[12px] text-clinic-gray font-light leading-relaxed">
-            {services.join(" · ")}
-          </p>
+          <p className="text-service-body">{services.join(" · ")}</p>
         )}
 
         {machine && (
-          <p className="text-[11px] text-clinic-gray/85 font-light">
-            <span className="uppercase tracking-[0.1em] text-[10px] text-clinic-gray">
-              Equipment ·{" "}
-            </span>
+          <p className="text-[11px] font-normal text-clinic-navy/70">
+            <span className="text-label">Equipment · </span>
             {machine}
           </p>
         )}
@@ -70,7 +64,7 @@ export default function DiagnosticServiceCard({
             {price}
           </span>
         ) : (
-          <span className="text-[11px] text-clinic-gray font-light italic leading-snug max-w-[55%]">
+          <span className="text-[12px] font-medium leading-snug text-clinic-navy/80 max-w-[55%]">
             {price}
           </span>
         )}

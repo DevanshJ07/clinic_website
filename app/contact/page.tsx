@@ -1,9 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { MapPin, Clock, Mail } from "lucide-react";
-import ContactPhoneList from "@/components/shared/ContactPhoneList";
-import ContactForm from "@/components/shared/ContactForm";
+import { ArrowRight, MapPin, Clock, Mail } from "lucide-react";
 import { CLINIC, CONTACT_LINES } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -21,27 +18,37 @@ export default function ContactPage() {
           <h1 className="font-display text-[2rem] md:text-[2.5rem] font-medium text-clinic-navy leading-tight mb-3">
             Get in touch
           </h1>
-          <p className="text-[15px] text-clinic-gray font-light max-w-lg">
-            For enquiries, call us directly or send a message using the form
-            below.
+          <p className="text-[15px] text-clinic-gray font-normal max-w-lg">
+            Call Medicare directly for appointments, admissions, and enquiries.
+            We are here to help during clinic hours and around the clock for
+            emergencies.
           </p>
         </div>
       </section>
 
-      <section className="py-10 bg-clinic-paper border-b border-border">
+      <section className="py-10 md:py-12 bg-clinic-paper border-b border-border">
         <div className="container-wide">
-          <div className="flex flex-col gap-px bg-border max-w-3xl">
+          <p className="eyebrow mb-5">Phone</p>
+          <div className="flex max-w-3xl flex-col gap-px bg-border">
             {CONTACT_LINES.map((line) => (
               <a
                 key={line.id}
                 href={`tel:${line.tel}`}
-                className="bg-background flex flex-col gap-1.5 p-6 md:p-8 hover:bg-clinic-warm/50 transition-colors"
+                className="flex flex-col gap-1.5 bg-background p-6 transition-colors hover:bg-clinic-warm/50 md:p-8"
               >
                 <p className="text-[11px] uppercase tracking-[0.16em] text-clinic-gray">
                   {line.label}
                 </p>
-                <p className="contact-phone-link">{line.phone}</p>
-                <p className="text-[13px] text-clinic-gray font-light">
+                <p
+                  className={
+                    line.id === "nursing-home"
+                      ? "font-display text-lg font-medium leading-snug tracking-tight text-clinic-navy md:text-xl"
+                      : "contact-phone-link"
+                  }
+                >
+                  {line.phone}
+                </p>
+                <p className="text-[13px] font-normal text-clinic-gray">
                   {line.detail}
                 </p>
               </a>
@@ -50,101 +57,69 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            <div className="lg:col-span-3 flex flex-col gap-6">
+          <p className="eyebrow mb-5">Clinic information</p>
+          <div className="grid gap-6 md:grid-cols-2 lg:max-w-4xl lg:gap-8">
+            <div className="flex gap-3 rounded-sm border border-border/60 bg-white/60 p-6 shadow-sm shadow-clinic-navy/[0.02]">
+              <MapPin className="mt-1 h-4 w-4 shrink-0 text-clinic-gray stroke-[1.5]" />
               <div>
-                <p className="eyebrow mb-3">Enquiry</p>
-                <h2 className="font-display text-[1.625rem] md:text-[2rem] font-medium text-clinic-navy">
-                  Send a message
-                </h2>
-                <p className="text-[14px] text-clinic-gray font-light mt-2">
-                  We will respond as soon as possible during clinic hours.
+                <p className="mb-2 text-[11px] uppercase tracking-[0.16em] text-clinic-gray">
+                  Address
                 </p>
+                <p className="text-[14px] font-normal leading-relaxed text-clinic-navy">
+                  {CLINIC.address.street}
+                  <br />
+                  {CLINIC.address.area}, {CLINIC.address.city}
+                  <br />
+                  {CLINIC.address.state} {CLINIC.address.pin}
+                </p>
+                <Link
+                  href="/find-us"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-clinic-navy transition-colors hover:text-clinic-blue"
+                >
+                  Find us on Google Maps
+                  <ArrowRight className="h-3.5 w-3.5 stroke-[1.5]" />
+                </Link>
               </div>
-              <ContactForm />
             </div>
 
-            <div className="lg:col-span-2 flex flex-col gap-8">
+            <div className="flex gap-3 rounded-sm border border-border/60 bg-white/60 p-6 shadow-sm shadow-clinic-navy/[0.02]">
+              <Mail className="mt-1 h-4 w-4 shrink-0 text-clinic-gray stroke-[1.5]" />
               <div>
-                <p className="eyebrow mb-3">Details</p>
-                <h2 className="font-display text-[1.625rem] md:text-[2rem] font-medium text-clinic-navy">
-                  Clinic information
-                </h2>
+                <p className="mb-2 text-[11px] uppercase tracking-[0.16em] text-clinic-gray">
+                  Email
+                </p>
+                <a
+                  href={`mailto:${CLINIC.contact.email}`}
+                  className="text-[14px] font-medium text-clinic-navy transition-colors hover:text-clinic-blue"
+                >
+                  {CLINIC.contact.email}
+                </a>
               </div>
+            </div>
 
-              <div className="flex flex-col gap-6">
-                <div className="flex gap-3 items-start">
-                  <MapPin className="w-4 h-4 text-clinic-gray shrink-0 mt-1 stroke-[1.5]" />
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-clinic-gray mb-1">
-                      Address
-                    </p>
-                    <p className="text-[14px] text-clinic-navy leading-relaxed font-light">
-                      {CLINIC.address.street}
-                      <br />
-                      {CLINIC.address.area}, {CLINIC.address.city}
-                      <br />
-                      {CLINIC.address.state} {CLINIC.address.pin}
-                    </p>
-                    <Link
-                      href="/find-us"
-                      className="inline-flex items-center gap-1.5 text-[13px] text-clinic-navy hover:text-clinic-blue transition-colors mt-3"
-                    >
-                      View on map
-                      <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />
-                    </Link>
-                  </div>
+            <div className="flex gap-3 rounded-sm border border-border/60 bg-white/60 p-6 shadow-sm shadow-clinic-navy/[0.02] md:col-span-2">
+              <Clock className="mt-1 h-4 w-4 shrink-0 text-clinic-gray stroke-[1.5]" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <p className="text-[14px] font-medium text-clinic-navy">
+                    {CLINIC.timings.diagnosticOpd.label}
+                  </p>
+                  <p className="mt-1 text-[13px] font-normal text-clinic-gray">
+                    Mon–Sat, 8 AM – 8 PM
+                    <br />
+                    Sun, 8 AM – 4 PM
+                  </p>
                 </div>
-
-                <div className="h-px bg-border/80" />
-
-                <div className="flex gap-3 items-start">
-                  <Mail className="w-4 h-4 text-clinic-gray shrink-0 mt-1 stroke-[1.5]" />
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-clinic-gray mb-1">
-                      Email
-                    </p>
-                    <a
-                      href={`mailto:${CLINIC.contact.email}`}
-                      className="text-[14px] text-clinic-navy hover:text-clinic-blue transition-colors"
-                    >
-                      {CLINIC.contact.email}
-                    </a>
-                  </div>
+                <div>
+                  <p className="text-[14px] font-medium text-clinic-navy">
+                    {CLINIC.timings.nursingHome.label}
+                  </p>
+                  <p className="mt-1 text-[13px] font-normal text-clinic-gray">
+                    Open 24 Hours
+                  </p>
                 </div>
-
-                <div className="h-px bg-border/80" />
-
-                <div className="flex gap-3 items-start">
-                  <Clock className="w-4 h-4 text-clinic-gray shrink-0 mt-1 stroke-[1.5]" />
-                  <div className="flex flex-col gap-3">
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-clinic-gray mb-1">
-                      Timings
-                    </p>
-                    <div>
-                      <p className="text-[14px] font-medium text-clinic-navy">
-                        {CLINIC.timings.diagnosticOpd.label}
-                      </p>
-                      <p className="text-[13px] text-clinic-gray font-light mt-0.5">
-                        Mon–Sat, 8 AM – 8 PM · Sun, 8 AM – 4 PM
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-[14px] font-medium text-clinic-navy">
-                        {CLINIC.timings.nursingHome.label}
-                      </p>
-                      <p className="text-[13px] text-clinic-gray font-light mt-0.5">
-                        Open 24 Hours
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="h-px bg-border/80" />
-
-                <ContactPhoneList itemClassName="py-4 first:pt-0 last:pb-0" />
               </div>
             </div>
           </div>

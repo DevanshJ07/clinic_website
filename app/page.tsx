@@ -9,7 +9,7 @@ import ContactSection from "@/components/home/ContactSection";
 export const metadata: Metadata = {
   title: "Medicare | Trusted Healthcare in Howrah",
   description:
-    "Medicare — over 37 years of trusted healthcare in Howrah. 600,000+ patients served. NABH-certified nursing home, NABL-accredited laboratory, and comprehensive care under one roof.",
+    "Medicare — over 37 years of trusted healthcare in Howrah. 600,000+ patients served. NABH-certified Nursing Home, NABL-accredited laboratory, and comprehensive care under one roof.",
 };
 
 export default function HomePage() {
