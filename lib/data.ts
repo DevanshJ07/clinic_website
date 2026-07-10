@@ -21,8 +21,7 @@ export const CLINIC = {
   contact: {
     helpline: "9331076661",
     diagnosticOpd: "033-40073713",
-    nursingHome:
-      "033-2638-1777 / 033-2638-1778 / 033-2638-1788 / 033-2638-9237",
+    nursingHome: "033-2638-1777 / 1778 / 1788 / 9237",
     nursingHomeTel: "03326381777",
     email: "medicareclinic@hotmail.com",
   },

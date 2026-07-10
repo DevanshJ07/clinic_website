@@ -260,8 +260,8 @@ export default function FacilitiesPage() {
           media={
             <FacilityImage
               src="/clinic/physiotherapy-room.png"
-              alt="Medicare physiotherapy treatment room with electrotherapy equipment"
-              objectPosition="center 70%"
+              alt="Medicare physiotherapy treatment room with electrotherapy equipment and treatment beds"
+              objectPosition="center"
             />
           }
         >
