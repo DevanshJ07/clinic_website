@@ -1,7 +1,7 @@
 export const INSURANCE_HERO = {
-  title: "Insurance & Health Schemes",
+  title: "Insurance & Mediclaim",
   subtitle:
-    "Medicare is recognized by leading insurance providers and accepts selected government health schemes for eligible patients.",
+    "Medicare is empanelled with government insurers, third-party administrators, and private insurance companies to provide eligible clients with cashless benefits for inpatient and/or outpatient care, along with pre-policy and renewal medical health check-up services.",
 };
 
 export const SCHEME_NOTE =
@@ -16,28 +16,64 @@ export const GOVERNMENT_SCHEMES = [
   },
 ];
 
-export const INSURANCE_PARTNERS = [
-  "STAR HEALTH & ALLIED INSURANCE CO. LTD.",
-  "MEDI ASSIST INDIA PVT. LTD.",
-  "APOLLO MUNICH HEALTH INSURANCE CO. LTD.",
-  "FAMILY HEALTH PLAN LTD.",
-  "RAKSHA TPA PVT. LTD.",
-  "GOOD HEALTH PLAN LTD.",
-  "BAJAJ ALLIANZ GENERAL INSURANCE CO. LTD.",
-  "HERITAGE HEALTH SERVICES (I) PVT. LTD.",
-  "RELIANCE GENERAL INSURANCE CO. LTD.",
-  "HDFC ERGO GENERAL INSURANCE CO. LTD.",
-  "FUTURE GENERALI INDIA INSURANCE CO. LTD.",
-  "ALANKIT HEALTH CARE LTD.",
-  "ICICI LOMBARD GENERAL INSURANCE CO. LTD.",
-  "PARK MEDICAL CONSULTANTS PVT. LTD.",
-  "DEDICATED HEALTHCARE SERVICES (INDIA) PVT. LTD.",
-  "VIDAL HEALTH TPA PVT. LTD.",
-  "CIGNA TTK HEALTH INSURANCE CO. LTD.",
-  "GENINS INDIA LTD.",
-  "SPURTI MEDITECH (TPA) SOLUTIONS PVT. LTD.",
-  "GODIGIT",
-];
+export const CASHLESS_COVERAGE_NOTE =
+  "Cashless approval, coverage, and eligibility are subject to the terms of the patient's policy, insurer/TPA authorization, and documentation requirements. Patients are advised to confirm eligibility with Medicare before admission or treatment.";
 
-export const INSURANCE_PARTNERS_INTRO =
-  "Medicare is recognized by the following insurance companies / TPAs for cashless claims:";
+export type EmpanelmentCategory = {
+  id: string;
+  title: string;
+  supportingLine?: string;
+  partners: string[];
+};
+
+export const EMPANELMENT_CATEGORIES: EmpanelmentCategory[] = [
+  {
+    id: "government-insurers",
+    title: "Government Insurance Companies",
+    supportingLine:
+      "Services are processed through the respective Third Party Administrators, subject to eligibility and authorization.",
+    partners: [
+      "National Insurance Company Ltd.",
+      "The New India Assurance Company Ltd.",
+      "United India Insurance Company Ltd.",
+      "The Oriental Insurance Company Ltd.",
+      "Life Insurance Corporation of India",
+      "SBI Health Insurance Ltd.",
+    ],
+  },
+  {
+    id: "tpas",
+    title: "Third Party Administrators",
+    partners: [
+      "Family Health Plan Insurance TPA",
+      "Heritage Health Insurance TPA",
+      "Genins India Insurance TPA Ltd.",
+      "Raksha Health Insurance TPA Pvt. Ltd.",
+      "Medi Assist Insurance TPA",
+      "Vidal Health Insurance TPA",
+      "Vipul MedCorp Insurance TPA",
+      "Good Health Insurance TPA",
+      "Ericson Insurance TPA Pvt. Ltd.",
+      "Aditya Birla General Insurance",
+      "Care Health Insurance",
+      "Go Digit General Insurance Ltd.",
+      "Niva Bupa General Insurance",
+      "Future Generali Health Insurance",
+      "Galaxy Health Insurance",
+      "Health India Insurance TPA",
+    ],
+  },
+  {
+    id: "private-insurers",
+    title: "Private Insurance Companies",
+    partners: [
+      "Cigna TTK — through TPA",
+      "Royal Sundaram — through TPA",
+      "Tata AIG Health Insurance — through TPA",
+      "Bajaj Allianz General & Life Insurance",
+      "ICICI Lombard General Insurance",
+      "Star Health & Allied Insurance",
+      "HDFC ERGO General Insurance",
+    ],
+  },
+];

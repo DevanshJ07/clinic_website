@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Phone, ChevronRight } from "lucide-react";
@@ -6,6 +5,10 @@ import BloodTestRatesPanel from "@/components/facilities/BloodTestRatesPanel";
 import CTScanRatesPanel from "@/components/facilities/CTScanRatesPanel";
 import CategorySection from "@/components/facilities/CategorySection";
 import DiagnosticServiceCard from "@/components/facilities/DiagnosticServiceCard";
+import FacilityContentLayout from "@/components/facilities/FacilityContentLayout";
+import FacilityImage, {
+  FacilityImageStack,
+} from "@/components/facilities/FacilityImage";
 import {
   DIAGNOSTIC_INTRO,
   DIAGNOSTIC_CATEGORIES,
@@ -24,7 +27,6 @@ import {
   CT_SCAN_CONTRAST_CHARGES,
   OPD_TREATMENT,
 } from "@/lib/diagnostic-services";
-import { CLINIC } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Diagnostic Centre & Facilities",
@@ -39,15 +41,24 @@ export default function FacilitiesPage() {
   return (
     <>
       {/* Hero + intro */}
-      <section className="relative overflow-hidden py-8 md:py-10 bg-home-hero bg-institutional-pattern border-b border-border/80">
+      <section className="relative overflow-hidden border-b border-border/80 bg-home-hero bg-institutional-pattern py-8 md:py-10">
         <div className="container-wide relative">
-          <div className="grid lg:grid-cols-[1.2fr_200px] gap-6 lg:gap-10 items-start">
+          <FacilityContentLayout
+            mediaFirstOnMobile={false}
+            media={
+              <FacilityImage
+                src="/clinic/lab-analyzer.png"
+                alt="Medicare NABL-accredited pathology laboratory — technician at diagnostic analyzer"
+                priority
+              />
+            }
+          >
             <div>
               <p className="eyebrow mb-3">Facilities</p>
-              <h1 className="font-display text-[1.875rem] md:text-[2.35rem] font-semibold text-clinic-navy leading-tight mb-3">
+              <h1 className="font-display mb-3 text-[1.875rem] font-semibold leading-tight text-clinic-navy md:text-[2.35rem]">
                 Diagnostic Centre
               </h1>
-              <div className="flex flex-col gap-3 max-w-2xl">
+              <div className="flex max-w-2xl flex-col gap-3">
                 {DIAGNOSTIC_INTRO.map((paragraph, i) => (
                   <p
                     key={i}
@@ -58,32 +69,22 @@ export default function FacilitiesPage() {
                 ))}
               </div>
             </div>
-            <div className="relative hidden lg:block w-[220px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-              <Image
-                src="/clinic/lab-analyzer.png"
-                alt="Medicare NABL-accredited pathology laboratory — technician at diagnostic analyzer"
-                fill
-                className="object-cover object-center"
-                sizes="220px"
-                priority
-              />
-            </div>
-          </div>
+          </FacilityContentLayout>
         </div>
       </section>
 
       {/* Category nav */}
-      <section className="sticky top-[4.25rem] md:top-[4.75rem] z-40 border-b border-border/80 bg-background/95 backdrop-blur-sm">
-        <div className="container-wide py-2 overflow-x-auto">
+      <section className="sticky top-[4.25rem] z-40 border-b border-border/80 bg-background/95 backdrop-blur-sm md:top-[4.75rem]">
+        <div className="container-wide overflow-x-auto py-2">
           <nav
-            className="flex items-center gap-1.5 min-w-max"
+            className="flex min-w-max items-center gap-1.5"
             aria-label="Diagnostic service categories"
           >
             {DIAGNOSTIC_CATEGORIES.map((cat) => (
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="text-[11px] md:text-[12px] font-medium text-clinic-navy/70 hover:text-clinic-navy border border-border/60 bg-white/60 px-2.5 py-1 hover:border-clinic-navy/25 transition-colors whitespace-nowrap"
+                className="whitespace-nowrap border border-border/60 bg-white/60 px-2.5 py-1 text-[11px] font-medium text-clinic-navy/70 transition-colors hover:border-clinic-navy/25 hover:text-clinic-navy md:text-[12px]"
               >
                 {cat.label}
               </a>
@@ -99,20 +100,27 @@ export default function FacilitiesPage() {
         title={PATHOLOGY_OVERVIEW.title}
         bg="bg-home-trust"
         headerAside={
-          <span className="inline-block text-[10px] font-medium uppercase tracking-[0.14em] text-clinic-navy bg-clinic-blue-50 border border-clinic-blue/15 px-2.5 py-1 lg:mt-6 shrink-0 h-fit">
+          <span className="inline-block h-fit shrink-0 border border-clinic-blue/15 bg-clinic-blue-50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-clinic-navy lg:mt-6">
             {PATHOLOGY_OVERVIEW.nabl}
           </span>
         }
       >
-        <div className="flex flex-col gap-5 mb-6">
-          <div className="grid lg:grid-cols-[1fr_220px] gap-5 lg:gap-8 items-start">
-            <div className="grid sm:grid-cols-3 gap-2">
+        <div className="mb-6 flex flex-col gap-5">
+          <FacilityContentLayout
+            media={
+              <FacilityImage
+                src={PATHOLOGY_OVERVIEW.image.src}
+                alt={PATHOLOGY_OVERVIEW.image.alt}
+              />
+            }
+          >
+            <div className="grid gap-2 sm:grid-cols-3">
               {PATHOLOGY_OVERVIEW.subServices.map((sub) => (
                 <div
                   key={sub.title}
                   className="rounded-sm border border-border/50 bg-white/50 px-3 py-2.5"
                 >
-                  <h4 className="text-[13px] font-semibold text-clinic-navy mb-0.5">
+                  <h4 className="mb-0.5 text-[13px] font-semibold text-clinic-navy">
                     {sub.title}
                   </h4>
                   <p className="text-[11px] font-normal leading-snug text-clinic-navy/75">
@@ -121,17 +129,7 @@ export default function FacilitiesPage() {
                 </div>
               ))}
             </div>
-
-            <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-              <Image
-                src={PATHOLOGY_OVERVIEW.image.src}
-                alt={PATHOLOGY_OVERVIEW.image.alt}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 220px"
-              />
-            </div>
-          </div>
+          </FacilityContentLayout>
 
           <p className="text-[12px] font-normal leading-snug text-clinic-navy/75">
             {PATHOLOGY_OVERVIEW.features.join(" · ")}
@@ -139,16 +137,14 @@ export default function FacilitiesPage() {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-label mb-2">
-            Laboratory Equipment
-          </h3>
-          <div className="grid sm:grid-cols-3 gap-px bg-border/60 border border-border/50 rounded-sm overflow-hidden">
+          <h3 className="text-label mb-2">Laboratory Equipment</h3>
+          <div className="grid gap-px overflow-hidden rounded-sm border border-border/50 bg-border/60 sm:grid-cols-3">
             {PATHOLOGY_OVERVIEW.equipment.map((eq) => (
               <div key={eq.model} className="bg-white/75 px-3 py-2.5">
                 <p className="text-[11px] font-normal leading-snug text-clinic-navy/75">
                   {eq.name}
                 </p>
-                <p className="font-display text-[13px] font-medium text-clinic-navy mt-0.5">
+                <p className="mt-0.5 font-display text-[13px] font-medium text-clinic-navy">
                   {eq.model}
                 </p>
               </div>
@@ -157,7 +153,7 @@ export default function FacilitiesPage() {
         </div>
 
         <div>
-          <h3 className="font-display text-[1.125rem] font-semibold text-clinic-navy mb-3">
+          <h3 className="mb-3 font-display text-[1.125rem] font-semibold text-clinic-navy">
             Common blood test rates
           </h3>
           <BloodTestRatesPanel
@@ -174,34 +170,27 @@ export default function FacilitiesPage() {
         title="Radiology Services"
         intro={RADIOLOGY_INTRO}
         bg="bg-home-facilities"
-        headerAside={
-          <div className="relative hidden md:block w-[160px] aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04] lg:mt-4">
-            <Image
-              src="/clinic/xray-interior.png"
-              alt="Medicare digital X-ray room — GE 500mA equipment"
-              fill
-              className="object-cover object-center"
-              sizes="160px"
-            />
-          </div>
-        }
       >
-        <div className="grid lg:grid-cols-[1fr_200px] gap-5 lg:gap-8 items-start">
+        <FacilityContentLayout
+          media={
+            <FacilityImageStack>
+              <FacilityImage
+                src="/clinic/xray-interior.png"
+                alt="Medicare digital X-ray room — GE 500mA equipment"
+              />
+              <FacilityImage
+                src="/clinic/ultrasound-room.png"
+                alt="Medicare ultrasound imaging room — GE Voluson P8"
+              />
+            </FacilityImageStack>
+          }
+        >
           <div className={SERVICE_GRID}>
             {RADIOLOGY_SERVICES.map((service) => (
               <DiagnosticServiceCard key={service.id} {...service} />
             ))}
           </div>
-          <div className="relative hidden lg:block aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-            <Image
-              src="/clinic/ultrasound-room.png"
-              alt="Medicare ultrasound imaging room — GE Voluson P8"
-              fill
-              className="object-cover object-center"
-              sizes="200px"
-            />
-          </div>
-        </div>
+        </FacilityContentLayout>
       </CategorySection>
 
       {/* Cardiology */}
@@ -225,7 +214,7 @@ export default function FacilitiesPage() {
         title="Endoscopy & Gastro Diagnostics"
         bg="bg-home-trust"
       >
-        <div className="grid sm:grid-cols-2 gap-3 max-w-2xl">
+        <div className="grid max-w-2xl gap-3 sm:grid-cols-2">
           {ENDOSCOPY_SERVICES.map((service) => (
             <DiagnosticServiceCard key={service.id} {...service} />
           ))}
@@ -267,7 +256,15 @@ export default function FacilitiesPage() {
         title="Physiotherapy"
         bg="bg-home-trust"
       >
-        <div className="grid md:grid-cols-[1fr_200px] gap-4 md:gap-6 items-start">
+        <FacilityContentLayout
+          media={
+            <FacilityImage
+              src="/clinic/physiotherapy-room.png"
+              alt="Medicare physiotherapy treatment room with electrotherapy equipment"
+              objectPosition="center 70%"
+            />
+          }
+        >
           <div className="max-w-md">
             <DiagnosticServiceCard
               name={PHYSIOTHERAPY_SERVICES.name}
@@ -275,17 +272,7 @@ export default function FacilitiesPage() {
               price={PHYSIOTHERAPY_SERVICES.price}
             />
           </div>
-          <div className="relative hidden md:block aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-            <Image
-              src="/clinic/physiotherapy-room.png"
-              alt="Medicare physiotherapy treatment room with electrotherapy equipment"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "center 70%" }}
-              sizes="200px"
-            />
-          </div>
-        </div>
+        </FacilityContentLayout>
       </CategorySection>
 
       {/* CT Scan */}
@@ -295,9 +282,16 @@ export default function FacilitiesPage() {
         title="CT Scan"
         bg="bg-home-about"
       >
-        <div className="grid lg:grid-cols-[1fr_240px] gap-4 lg:gap-8 items-start">
+        <FacilityContentLayout
+          media={
+            <FacilityImage
+              src={CT_SCAN.image.src}
+              alt={CT_SCAN.image.alt}
+            />
+          }
+        >
           <div className="flex flex-col gap-4">
-            <p className="text-[13px] font-normal leading-relaxed text-clinic-navy/80 max-w-2xl">
+            <p className="max-w-2xl text-[13px] font-normal leading-relaxed text-clinic-navy/80">
               {CT_SCAN.description}
             </p>
             <p className="text-[12px] font-normal text-clinic-navy/75">
@@ -309,16 +303,7 @@ export default function FacilitiesPage() {
               contrastCharges={CT_SCAN_CONTRAST_CHARGES}
             />
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-white/50 shadow-sm shadow-clinic-navy/[0.04]">
-            <Image
-              src={CT_SCAN.image.src}
-              alt={CT_SCAN.image.alt}
-              fill
-              className="object-cover object-center"
-              sizes="240px"
-            />
-          </div>
-        </div>
+        </FacilityContentLayout>
       </CategorySection>
 
       {/* OPD */}
@@ -328,43 +313,53 @@ export default function FacilitiesPage() {
         title={OPD_TREATMENT.name}
         bg="bg-home-trust"
       >
-        <div className="max-w-lg">
-          <DiagnosticServiceCard
-            name="Available procedures"
-            bookingName={OPD_TREATMENT.name}
-            description={OPD_TREATMENT.description}
-            services={OPD_TREATMENT.services}
-            price={OPD_TREATMENT.price}
-          />
-        </div>
+        <FacilityContentLayout
+          media={
+            <FacilityImage
+              src="/clinic/waiting-area.png"
+              alt="Medicare outpatient waiting and treatment area"
+              objectPosition="center 45%"
+            />
+          }
+        >
+          <div className="max-w-lg">
+            <DiagnosticServiceCard
+              name="Available procedures"
+              bookingName={OPD_TREATMENT.name}
+              description={OPD_TREATMENT.description}
+              services={OPD_TREATMENT.services}
+              price={OPD_TREATMENT.price}
+            />
+          </div>
+        </FacilityContentLayout>
       </CategorySection>
 
       {/* CTA */}
-      <section className="py-10 md:py-11 bg-home-contact">
-        <div className="container-wide flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <section className="bg-home-contact py-10 md:py-11">
+        <div className="container-wide flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="font-display text-[1.25rem] font-medium text-clinic-navy">
               Book Appointment
             </p>
-            <p className="text-[13px] font-normal text-clinic-navy/75 mt-1 max-w-md">
+            <p className="mt-1 max-w-md text-[13px] font-normal text-clinic-navy/75">
               Call Medicare Diagnostic Centre &amp; OPD to schedule tests or
               imaging.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+          <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             <a
               href="tel:03340073713"
-              className="btn-book-appointment px-5 py-3 gap-2"
+              className="btn-book-appointment gap-2 px-5 py-3"
             >
-              <Phone className="w-4 h-4 stroke-[1.5]" />
+              <Phone className="h-4 w-4 stroke-[1.5]" />
               Book Appointment
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 text-[13px] font-medium text-clinic-navy border border-border/80 bg-white/70 px-5 py-3 hover:border-clinic-navy/30 transition-colors group"
+              className="group inline-flex items-center justify-center gap-2 border border-border/80 bg-white/70 px-5 py-3 text-[13px] font-medium text-clinic-navy transition-colors hover:border-clinic-navy/30"
             >
               Contact page
-              <ChevronRight className="w-4 h-4 stroke-[1.5] group-hover:translate-x-0.5 transition-transform" />
+              <ChevronRight className="h-4 w-4 stroke-[1.5] transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
         </div>

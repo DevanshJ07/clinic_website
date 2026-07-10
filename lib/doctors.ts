@@ -149,7 +149,7 @@ export const MEDICARE_DOCTORS: DoctorProfile[] = [
     qualifications: "MBBS (Cal), DGO, MD (Cal)",
     photoSrc: "/clinic/dr-sitansu-chatterjee.png",
     photoAlt: "Dr. Sitansu Chatterjee",
-    photoObjectPosition: "50% 18%",
+    photoObjectPosition: "50% 36%",
     timing: DEFAULT_TIMING,
   },
   {
@@ -170,7 +170,7 @@ export const MEDICARE_DOCTORS: DoctorProfile[] = [
     qualifications: "MBBS (Cal), MD (Medicine), Diploma / MSc in Diabetes (UK)",
     photoSrc: "/clinic/dr-p-r-gupta.png",
     photoAlt: "Dr. P. R. Gupta",
-    photoObjectPosition: "50% 20%",
+    photoObjectPosition: "50% 40%",
     professionalExpertise: [
       "Consultant in Diabetes and Endocrinology",
       "Physician and Geriatrician",

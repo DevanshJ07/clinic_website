@@ -29,7 +29,7 @@ export default function NursingHomePage() {
           className="pointer-events-none absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-clinic-green/[0.05] blur-3xl"
         />
         <div className="container-wide relative">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.85fr] lg:gap-10">
             <div className="flex flex-col gap-5">
               <p className="eyebrow">Inpatient Care · Open 24 Hours</p>
               <h1 className="font-display text-[2rem] md:text-[2.75rem] font-semibold text-clinic-navy leading-[1.1] tracking-[-0.02em]">
@@ -60,14 +60,18 @@ export default function NursingHomePage() {
                 </a>
               </div>
             </div>
-            <div className="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
+            <div className="relative aspect-[5/4] w-full overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04] lg:ml-auto lg:aspect-[4/3] lg:max-w-[360px] xl:max-w-[380px]">
               <Image
                 src="/clinic/nursing-patient-room.png"
                 alt="Medicare Nursing Home — single accommodation with hospital bed and piped oxygen facility"
                 fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 90vw, 50vw"
+                className="object-cover object-center brightness-[0.88] contrast-[1.03] saturate-[0.96]"
+                sizes="(max-width: 1024px) 90vw, 380px"
                 priority
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-br from-clinic-navy/[0.12] via-clinic-navy/[0.06] to-clinic-navy/[0.14]"
               />
             </div>
           </div>
@@ -253,33 +257,18 @@ export default function NursingHomePage() {
 
       {/* Pharmacy */}
       <section className="py-10 md:py-12 bg-background border-b border-border/80">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-            <div className="relative w-full max-w-xs mx-auto lg:max-w-sm lg:mx-0 lg:order-2 aspect-[3/4] overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04]">
-              <Image
-                src="/clinic/pharmacy.png"
-                alt="Medicare Pharmacy storefront — Chemist & Druggist, Howrah"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 320px, 384px"
-                priority
-              />
-            </div>
-
-            <div className="lg:order-1">
-              <p className="eyebrow mb-3">On-site pharmacy</p>
-              <h2 className="font-display text-[1.375rem] md:text-[1.5rem] font-medium text-clinic-navy mb-2">
-                Medicare Pharmacy
-              </h2>
-              <p className="text-[14px] text-clinic-gray font-light leading-relaxed max-w-xl">
-                {PHARMACY_NOTE}
-              </p>
-              <p className="flex items-center gap-2 text-[13px] text-clinic-navy mt-3 font-light">
-                <Clock className="w-3.5 h-3.5 stroke-[1.5] text-clinic-gray" />
-                9 AM – 8 PM
-              </p>
-            </div>
-          </div>
+        <div className="container-wide max-w-2xl">
+          <p className="eyebrow mb-3">On-site pharmacy</p>
+          <h2 className="font-display text-[1.375rem] md:text-[1.5rem] font-medium text-clinic-navy mb-2">
+            Medicare Pharmacy
+          </h2>
+          <p className="text-[14px] text-clinic-gray font-light leading-relaxed">
+            {PHARMACY_NOTE}
+          </p>
+          <p className="flex items-center gap-2 text-[13px] text-clinic-navy mt-3 font-light">
+            <Clock className="w-3.5 h-3.5 stroke-[1.5] text-clinic-gray" />
+            9 AM – 8 PM
+          </p>
         </div>
       </section>
 
