@@ -34,9 +34,7 @@ export const ROOM_TYPES = [
     name: "Single Accommodation",
     amenities: [
       "Attached bathroom",
-      "Sofa-cum-bed for attendant",
-      "Couch/sofa seating for the accompanying attendant or family member",
-      "Piped oxygen",
+      "Sofa-cum-bed for the attendant or accompanying family member.",
       "Centralized oxygen source",
       "Suction facility",
       "Air-conditioned",
@@ -50,8 +48,6 @@ export const ROOM_TYPES = [
     amenities: [
       "Air-conditioned",
       "Attached bathroom",
-      "Couch/sofa seating for the accompanying attendant or family member",
-      "Piped oxygen",
       "Centralized oxygen source",
       "Suction facility",
       "TV",
@@ -61,7 +57,7 @@ export const ROOM_TYPES = [
   {
     id: "wards",
     name: "Male & Female Wards",
-    amenities: ["Piped oxygen", "Centralized oxygen source", "Suction facility", "Good ambience"],
+    amenities: ["Centralized oxygen source", "Suction facility", "Good ambience"],
   },
   {
     id: "icu",

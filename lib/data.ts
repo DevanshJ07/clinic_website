@@ -171,7 +171,7 @@ export const ABOUT_HISTORY = [
 
 export const HOME_ABOUT = {
   title: "Pioneer in modern diagnostics since 1988",
-  body: "Medicare was started by two qualified eminent doctors in 1988 after noticing the lack of modern diagnostic and treatment facilities in Howrah — a modern diagnostic cum nursing room with all facilities under one roof.",
+  body: "Medicare was started by two qualified eminent doctors in 1988 after noticing the lack of modern diagnostic and treatment facilities in Howrah — Medicare, a modern diagnostic cum nursing room with all facilities under one roof was conceptualized.",
 };
 
 export const HOME_FACILITIES = [

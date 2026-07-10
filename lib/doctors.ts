@@ -1,5 +1,5 @@
 export const DOCTORS_INTRO =
-  "Medicare hosts a panel of qualified specialists across orthopaedics, cardiology, gynaecology, surgery, ENT, diabetes care, and other disciplines. Doctor availability may vary, so patients are requested to call before visiting.";
+  "Medicare hosts a panel of qualified specialists across general surgery, orthopaedics, cardiology, gynaecology, ENT, diabetes care, and other disciplines. Doctor availability may vary, so patients are requested to call before visiting.";
 
 export const DOCTORS_AVAILABILITY_NOTE =
   "Doctor availability and timings may change. Please call before visiting.";
@@ -8,7 +8,7 @@ export const DEFAULT_TIMING = "Please call to confirm availability.";
 
 export const DOCTOR_FILTER_TAGS = [
   { id: "all", label: "All" },
-  { id: "surgery", label: "Surgery" },
+  { id: "surgery", label: "General Surgery" },
   { id: "orthopaedic", label: "Orthopaedic" },
   { id: "gynaecology", label: "Gynaecology" },
   { id: "obstetrics", label: "Obstetrics" },
@@ -112,7 +112,14 @@ export const MEDICARE_DOCTORS: DoctorProfile[] = [
     id: "dr-b-b-shukla",
     name: "Dr. B. B. Shukla",
     specialities: ["Cardiologist & Physician"],
-    filterTags: ["cardiology", "general-medicine"],
+    filterTags: [
+      "cardiology",
+      "diabetes",
+      "endocrinology",
+      "internal-medicine",
+      "general-medicine",
+      "geriatric-medicine",
+    ],
     qualifications: "MD",
     photoSrc: "/clinic/dr-b-b-shukla.png",
     photoAlt: "Dr. B. B. Shukla",
@@ -171,6 +178,7 @@ export const MEDICARE_DOCTORS: DoctorProfile[] = [
       "diabetes",
       "endocrinology",
       "internal-medicine",
+      "general-medicine",
       "geriatric-medicine",
     ],
     qualifications: "MBBS (Cal), MD (Medicine), Diploma / MSc in Diabetes (UK)",

@@ -63,7 +63,7 @@ export default function NursingHomePage() {
             <div className="relative aspect-[5/4] w-full overflow-hidden rounded-sm border border-border/60 bg-clinic-warm shadow-sm shadow-clinic-navy/[0.04] lg:ml-auto lg:aspect-[4/3] lg:max-w-[360px] xl:max-w-[380px]">
               <Image
                 src="/clinic/nursing-patient-room.png"
-                alt="Medicare Nursing Home — single accommodation with hospital bed and piped oxygen facility"
+                alt="Medicare Nursing Home — single accommodation with hospital bed and centralized oxygen facility"
                 fill
                 className="object-cover object-center brightness-[0.88] contrast-[1.03] saturate-[0.96]"
                 sizes="(max-width: 1024px) 90vw, 380px"
