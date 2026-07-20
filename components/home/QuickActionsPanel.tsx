@@ -84,7 +84,7 @@ export default function QuickActionsPanel() {
               Find Us
             </h2>
             <p className="text-[12px] text-clinic-gray font-light leading-relaxed flex-1">
-              Visit Medicare at 138, Grand Trunk Road South, Shibpur, Howrah.
+              Visit Medicare at Shree Apartments, 138, G.T Road South, Shibpur, Howrah.
             </p>
             <span className={actionLink}>
               Get directions

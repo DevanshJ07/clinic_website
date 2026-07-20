@@ -5,18 +5,19 @@ export const CLINIC = {
   established: 1988,
   yearsOfService: "37+",
   address: {
-    street: "138, Grand Trunk Road South",
+    building: "Shree Apartments",
+    street: "138, G.T Road South",
     area: "Shibpur",
     city: "Howrah",
     state: "West Bengal",
     pin: "711102",
     country: "India",
-    full: "138, Grand Trunk Road South, Shibpur, Howrah, West Bengal 711102",
+    full: "Shree Apartments, 138, G.T Road South, Shibpur, Howrah, West Bengal 711102",
   },
   maps: {
     url: "https://maps.app.goo.gl/pZ4Mnb3dqWwhtUZU6",
     embed:
-      "https://maps.google.com/maps?q=138,+Grand+Trunk+Road+South,+Shibpur,+Howrah,+West+Bengal+711102&hl=en&z=16&output=embed",
+      "https://maps.google.com/maps?q=Shree+Apartments,+138,+G.T+Road+South,+Shibpur,+Howrah,+West+Bengal+711102&hl=en&z=16&output=embed",
   },
   contact: {
     helpline: "9331076661",
@@ -44,8 +45,46 @@ export const CLINIC = {
     sundayHours: "8:00 AM – 4:00 PM",
     emergency: "Nursing Home open 24 hours",
   },
-  landmark: "Opposite Howrah Jute Mill, Shibpur",
+  landmark: "Opposite HDFC Bank, Howrah Jute Mill, Shibpur",
+  landmarks: ["Opposite HDFC Bank", "Howrah Jute Mill"],
 };
+
+export const POSITIONING_STATEMENT =
+  "Howrah's first integrated medical centre since 1988, committed to accessible and affordable healthcare.";
+
+export const DIAGNOSTIC_24_HOUR_HIGHLIGHT =
+  "X-ray, CT Scan and Pathology services available 24 hours.";
+
+export const INDOOR_ADMISSION_HIGHLIGHT =
+  "Indoor admission available round the clock.";
+
+export const CAREERS = {
+  heading: "Join Our Team",
+  text: "For better career prospects, join our team.",
+  phones: [
+    { display: "98300-09417", tel: "9830009417" },
+    { display: "98310-05555", tel: "983105555" },
+  ],
+};
+
+export const ACCREDITATION_MARKS = [
+  {
+    id: "nabh",
+    alt: "NABH accredited Nursing Home",
+    src: "/accreditation/nabh-certification-mark.png",
+    placeholderLabel: "Official NABH certification mark",
+    requiredFile: "public/accreditation/nabh-certification-mark.png",
+    available: false,
+  },
+  {
+    id: "nabl",
+    alt: "NABL accredited Medical Laboratory",
+    src: "/accreditation/nabl-accreditation-symbol.png",
+    placeholderLabel: "Official NABL accreditation symbol",
+    requiredFile: "public/accreditation/nabl-accreditation-symbol.png",
+    available: false,
+  },
+] as const;
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { CERTIFICATIONS } from "@/lib/data";
+import { CERTIFICATIONS, ACCREDITATION_MARKS } from "@/lib/data";
+import AccreditationMarkSlot from "@/components/shared/AccreditationMarkSlot";
 
 export default function CertificationsSection() {
   return (
@@ -26,7 +27,9 @@ export default function CertificationsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-px bg-border">
-          {CERTIFICATIONS.map((cert) => (
+          {CERTIFICATIONS.map((cert) => {
+            const mark = ACCREDITATION_MARKS.find((item) => item.id === cert.id);
+            return (
             <article
               key={cert.id}
               className="bg-background p-10 md:p-12 flex flex-col gap-8"
@@ -34,11 +37,15 @@ export default function CertificationsSection() {
               {/* Seal-style header */}
               <div className="flex items-start justify-between gap-6">
                 <div className="flex flex-col gap-4">
+                  {mark ? (
+                    <AccreditationMarkSlot mark={mark} />
+                  ) : (
                   <div className="w-16 h-16 rounded-full border-2 border-clinic-navy/15 flex items-center justify-center">
                     <span className="font-display text-lg font-medium text-clinic-navy tracking-wide">
                       {cert.acronym}
                     </span>
                   </div>
+                  )}
                   <div>
                     <p className="text-[11px] uppercase tracking-[0.2em] text-clinic-gray mb-2">
                       {cert.appliesTo} Section
@@ -61,7 +68,8 @@ export default function CertificationsSection() {
                 </p>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-10 flex items-center justify-between gap-4 pt-8 border-t border-border">

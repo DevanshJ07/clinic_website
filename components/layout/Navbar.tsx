@@ -44,10 +44,7 @@ export default function Navbar() {
             aria-label="Medicare — Home"
           >
             <span className="font-display text-[1.35rem] md:text-[1.5rem] font-medium tracking-[-0.02em] text-clinic-navy">
-              Medicare
-            </span>
-            <span className="hidden sm:inline text-[10px] font-normal uppercase tracking-[0.18em] text-clinic-gray/80">
-              Est. {CLINIC.established}
+              Medicare Clinic
             </span>
           </Link>
 

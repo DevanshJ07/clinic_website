@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone } from "lucide-react";
-import { CLINIC } from "@/lib/data";
+import { CLINIC, POSITIONING_STATEMENT } from "@/lib/data";
 
 export default function HeroSection() {
   return (
@@ -19,6 +19,10 @@ export default function HeroSection() {
                 Trusted healthcare for over 37 years
               </h1>
             </div>
+
+            <p className="max-w-lg text-[15px] font-medium leading-relaxed text-clinic-navy/90 md:text-[16px]">
+              {POSITIONING_STATEMENT}
+            </p>
 
             <p className="text-[16px] md:text-[17px] text-clinic-gray font-light leading-[1.75] max-w-md">
               A pioneer in modern diagnostic facilities in Howrah since 1988

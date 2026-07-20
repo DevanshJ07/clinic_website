@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import AboutImageCarousel from "@/components/about/AboutImageCarousel";
-import { ABOUT_HISTORY, CLINIC, COVID_VACCINATION } from "@/lib/data";
+import { ABOUT_HISTORY, CLINIC, COVID_VACCINATION, POSITIONING_STATEMENT } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -28,6 +28,9 @@ export default function AboutPage() {
                 <h1 className="font-display text-[2rem] md:text-[2.35rem] font-medium text-clinic-navy leading-[1.15]">
                   About Medicare
                 </h1>
+                <p className="mt-4 text-[15px] md:text-[16px] font-medium leading-relaxed text-clinic-navy/90 max-w-2xl">
+                  {POSITIONING_STATEMENT}
+                </p>
               </div>
 
               <div className="flex flex-col gap-6">

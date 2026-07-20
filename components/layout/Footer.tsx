@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { CLINIC, NAV_LINKS, CONTACT_LINES } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import CareersCallout from "@/components/shared/CareersCallout";
 
 const FACILITY_LINKS = [
   { label: "General Medicine", href: "/facilities#general-medicine" },
@@ -124,6 +125,8 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
+
+            <CareersCallout variant="compact" />
           </div>
         </div>
       </div>

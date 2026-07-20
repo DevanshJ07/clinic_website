@@ -1,9 +1,13 @@
-import { HOME_TRUST } from "@/lib/data";
+import { HOME_TRUST, DIAGNOSTIC_24_HOUR_HIGHLIGHT } from "@/lib/data";
+import { AccreditationMarksRow } from "@/components/shared/AccreditationMarkSlot";
 
 export default function TrustStrip() {
   return (
     <section className="relative overflow-hidden border-b border-border/80 bg-home-trust bg-institutional-pattern">
       <div className="container-wide py-10 md:py-12">
+        <p className="mb-6 text-center text-[13px] font-medium text-clinic-navy/85 md:text-[14px]">
+          {DIAGNOSTIC_24_HOUR_HIGHLIGHT}
+        </p>
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-4 lg:divide-x lg:divide-border/70">
           {HOME_TRUST.map((item, i) => (
             <li
@@ -32,6 +36,9 @@ export default function TrustStrip() {
             </li>
           ))}
         </ul>
+        <div className="mt-8 border-t border-border/60 pt-8">
+          <AccreditationMarksRow compact />
+        </div>
       </div>
     </section>
   );

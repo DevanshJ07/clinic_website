@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin, Clock, Mail } from "lucide-react";
 import { CLINIC, CONTACT_LINES } from "@/lib/data";
+import CareersCallout from "@/components/shared/CareersCallout";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -68,6 +69,8 @@ export default function ContactPage() {
                   Address
                 </p>
                 <p className="text-[14px] font-normal leading-relaxed text-clinic-navy">
+                  {CLINIC.address.building}
+                  <br />
                   {CLINIC.address.street}
                   <br />
                   {CLINIC.address.area}, {CLINIC.address.city}
@@ -125,6 +128,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <CareersCallout />
     </>
   );
 }

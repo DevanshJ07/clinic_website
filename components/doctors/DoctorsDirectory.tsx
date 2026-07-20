@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import DoctorCard from "@/components/doctors/DoctorCard";
 import {
   DOCTOR_FILTER_TAGS,
+  DOCTOR_DISPLAY_ORDER,
   MEDICARE_DOCTORS,
   type DoctorFilterId,
 } from "@/lib/doctors";
@@ -18,7 +19,15 @@ export default function DoctorsDirectory() {
         ? MEDICARE_DOCTORS
         : MEDICARE_DOCTORS.filter((d) => d.filterTags.includes(activeFilter));
 
-    return [...list].sort((a, b) => Number(b.featured) - Number(a.featured));
+    return [...list].sort(
+      (a, b) =>
+        DOCTOR_DISPLAY_ORDER.indexOf(
+          a.id as (typeof DOCTOR_DISPLAY_ORDER)[number]
+        ) -
+        DOCTOR_DISPLAY_ORDER.indexOf(
+          b.id as (typeof DOCTOR_DISPLAY_ORDER)[number]
+        )
+    );
   }, [activeFilter]);
 
   return (

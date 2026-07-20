@@ -8,8 +8,8 @@ import {
   GOVERNMENT_SCHEMES,
   EMPANELMENT_CATEGORIES,
   CASHLESS_COVERAGE_NOTE,
+  INSURANCE_ENQUIRY_PHONES,
 } from "@/lib/insurance";
-import { CLINIC } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Insurance & Mediclaim",
@@ -103,26 +103,16 @@ export default function InsuranceSchemesPage() {
             For insurance or scheme enquiries, please contact
           </h2>
           <div className="mb-6 flex flex-col flex-wrap gap-3 sm:flex-row">
-            <a
-              href={`tel:${CLINIC.contact.helpline}`}
-              className="inline-flex items-center gap-2 rounded-sm border border-border/60 bg-white/70 px-5 py-3 text-[14px] text-clinic-navy transition-colors hover:border-clinic-navy/25"
-            >
-              <Phone className="h-4 w-4 stroke-[1.5] text-clinic-gray" />
-              <span>
-                <span className="text-label mb-0.5 block">24×7 Helpline</span>
-                {CLINIC.contact.helpline}
-              </span>
-            </a>
-            <a
-              href={`tel:${CLINIC.contact.nursingHomeTel}`}
-              className="inline-flex items-center gap-2 rounded-sm border border-border/60 bg-white/70 px-5 py-3 text-[14px] text-clinic-navy transition-colors hover:border-clinic-navy/25"
-            >
-              <Phone className="h-4 w-4 shrink-0 stroke-[1.5] text-clinic-gray" />
-              <span>
-                <span className="text-label mb-0.5 block">Nursing Home</span>
-                <span className="leading-snug">{CLINIC.contact.nursingHome}</span>
-              </span>
-            </a>
+            {INSURANCE_ENQUIRY_PHONES.map((phone) => (
+              <a
+                key={phone}
+                href={`tel:${phone}`}
+                className="inline-flex items-center gap-2 rounded-sm border border-border/60 bg-white/70 px-5 py-3 text-[14px] text-clinic-navy transition-colors hover:border-clinic-navy/25"
+              >
+                <Phone className="h-4 w-4 stroke-[1.5] text-clinic-gray" />
+                <span>{phone}</span>
+              </a>
+            ))}
           </div>
           <Link
             href="/contact"

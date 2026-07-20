@@ -7,7 +7,7 @@ import { CLINIC } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Find Us",
   description:
-    "Find Medicare Clinic & Diagnostic Centre at 138, Grand Trunk Road South, Shibpur, Howrah. Directions, map, timings, and contact details.",
+    "Find Medicare Clinic & Diagnostic Centre at Shree Apartments, 138, G.T Road South, Shibpur, Howrah. Directions, map, timings, and contact details.",
 };
 
 const TRANSPORT = [
@@ -38,7 +38,7 @@ export default function FindUsPage() {
             Find us in Shibpur, Howrah
           </h1>
           <p className="text-[15px] text-clinic-gray font-light max-w-xl">
-            Conveniently located on Grand Trunk Road South with easy access by
+            Conveniently located on G.T Road South with easy access by
             road, bus, and auto-rickshaw.
           </p>
         </div>
@@ -80,9 +80,11 @@ export default function FindUsPage() {
                 <p className="text-[11px] uppercase tracking-[0.16em] text-clinic-gray mb-2">
                   Nearby landmark
                 </p>
-                <p className="text-[14px] text-clinic-gray font-light leading-relaxed">
-                  {CLINIC.landmark}
-                </p>
+                <div className="flex flex-col gap-1 text-[14px] font-light leading-relaxed text-clinic-gray">
+                  {CLINIC.landmarks.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -102,6 +104,8 @@ export default function FindUsPage() {
                       Address
                     </p>
                     <address className="not-italic text-[15px] text-clinic-navy leading-[1.75] font-light">
+                      {CLINIC.address.building}
+                      <br />
                       {CLINIC.address.street}
                       <br />
                       {CLINIC.address.area}, {CLINIC.address.city}

@@ -16,6 +16,12 @@ export const GOVERNMENT_SCHEMES = [
   },
 ];
 
+export const INSURANCE_ENQUIRY_PHONES = [
+  "9836612523",
+  "9830009417",
+  "9331076661",
+];
+
 export const CASHLESS_COVERAGE_NOTE =
   "Cashless approval, coverage, and eligibility are subject to the terms of the patient's policy, insurer/TPA authorization, and documentation requirements. Patients are advised to confirm eligibility with Medicare before admission or treatment.";
 

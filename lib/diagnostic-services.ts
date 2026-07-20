@@ -156,6 +156,7 @@ export const PHYSIOTHERAPY_SERVICES = {
     "IFT",
     "Nerve muscle stimulator",
     "Wax bath",
+    "etc.",
   ],
   price: ENQUIRE_PRICE,
 };
@@ -212,9 +213,9 @@ export const OPD_TREATMENT = {
 
 export const DIAGNOSTIC_CATEGORIES = [
   { id: "pathology", label: "Pathology" },
+  { id: "endoscopy", label: "Endoscopy" },
   { id: "radiology", label: "Radiology" },
   { id: "cardiology", label: "Cardiology" },
-  { id: "endoscopy", label: "Endoscopy" },
   { id: "neurology", label: "Neurology" },
   { id: "pulmonary", label: "Pulmonary" },
   { id: "physiotherapy", label: "Physiotherapy" },

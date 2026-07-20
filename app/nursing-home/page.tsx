@@ -9,9 +9,11 @@ import {
   OT_SURGERIES,
   ROOM_TYPES,
   EMERGENCY_ADMISSION,
+  EMERGENCY_ADMISSION_SUPPORT,
   PHARMACY_NOTE,
+  NURSING_HOME_ADDITIONAL_FACILITIES,
 } from "@/lib/nursing-home";
-import { CLINIC } from "@/lib/data";
+import { CLINIC, INDOOR_ADMISSION_HIGHLIGHT } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Nursing Home",
@@ -38,6 +40,9 @@ export default function NursingHomePage() {
               <p className="text-[15px] md:text-[16px] text-clinic-gray font-light leading-relaxed max-w-lg">
                 Excellent patient care, modern facilities, and 24×7 emergency
                 admission in a trusted inpatient setting.
+              </p>
+              <p className="text-[14px] md:text-[15px] font-medium text-clinic-navy/90 max-w-lg">
+                {INDOOR_ADMISSION_HIGHLIGHT}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
                 <a
@@ -229,14 +234,47 @@ export default function NursingHomePage() {
         </div>
       </section>
 
+      {/* Additional facilities */}
+      <section className="py-10 md:py-12 bg-nursing-soft border-b border-border/80">
+        <div className="container-wide">
+          <div className="mb-8">
+            <p className="eyebrow mb-3">Amenities</p>
+            <h2 className="font-display text-[1.5rem] md:text-[1.75rem] font-medium text-clinic-navy">
+              Additional Facilities
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
+            {NURSING_HOME_ADDITIONAL_FACILITIES.map((facility) => (
+              <article
+                key={facility.id}
+                className="rounded-sm border border-border/60 bg-white/70 p-5 shadow-sm shadow-clinic-navy/[0.02]"
+              >
+                <h3 className="font-display text-[15px] font-medium text-clinic-navy mb-2">
+                  {facility.title}
+                </h3>
+                <p className="text-[13px] text-clinic-gray font-light leading-relaxed">
+                  {facility.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Emergency admission */}
       <section className="py-10 md:py-12 bg-nursing-warm border-b border-border/80">
         <div className="container-wide">
           <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 items-center rounded-sm border border-clinic-navy/10 bg-white/60 p-6 md:p-8 shadow-sm shadow-clinic-navy/[0.03]">
-            <div>
-              <p className="eyebrow mb-3">Emergency admission</p>
+            <div className="flex flex-col gap-3">
+              <p className="eyebrow">Emergency admission</p>
               <p className="font-display text-[1.25rem] md:text-[1.375rem] font-medium text-clinic-navy leading-snug max-w-2xl">
                 {EMERGENCY_ADMISSION}
+              </p>
+              <p className="text-[14px] font-medium text-clinic-navy/85 max-w-2xl">
+                {INDOOR_ADMISSION_HIGHLIGHT}
+              </p>
+              <p className="text-[14px] font-medium text-clinic-navy/85 max-w-2xl">
+                {EMERGENCY_ADMISSION_SUPPORT}
               </p>
             </div>
             <a

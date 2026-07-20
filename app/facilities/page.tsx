@@ -27,6 +27,7 @@ import {
   CT_SCAN_CONTRAST_CHARGES,
   OPD_TREATMENT,
 } from "@/lib/diagnostic-services";
+import { DIAGNOSTIC_24_HOUR_HIGHLIGHT } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Diagnostic Centre & Facilities",
@@ -59,6 +60,9 @@ export default function FacilitiesPage() {
                 Diagnostic Centre
               </h1>
               <div className="flex max-w-2xl flex-col gap-3">
+                <p className="rounded-sm border border-clinic-navy/10 bg-white/60 px-4 py-3 text-[14px] font-medium leading-relaxed text-clinic-navy md:text-[15px]">
+                  {DIAGNOSTIC_24_HOUR_HIGHLIGHT}
+                </p>
                 {DIAGNOSTIC_INTRO.map((paragraph, i) => (
                   <p
                     key={i}
@@ -163,13 +167,27 @@ export default function FacilitiesPage() {
         </div>
       </CategorySection>
 
+      {/* Endoscopy */}
+      <CategorySection
+        id="endoscopy"
+        eyebrow="Gastroenterology"
+        title="Endoscopy & Gastro Diagnostics"
+        bg="bg-home-facilities"
+      >
+        <div className="grid max-w-2xl gap-3 sm:grid-cols-2">
+          {ENDOSCOPY_SERVICES.map((service) => (
+            <DiagnosticServiceCard key={service.id} {...service} />
+          ))}
+        </div>
+      </CategorySection>
+
       {/* Radiology */}
       <CategorySection
         id="radiology"
         eyebrow="Imaging"
         title="Radiology Services"
         intro={RADIOLOGY_INTRO}
-        bg="bg-home-facilities"
+        bg="bg-home-about"
       >
         <FacilityContentLayout
           media={
@@ -198,24 +216,10 @@ export default function FacilitiesPage() {
         id="cardiology"
         eyebrow="Heart care"
         title="Cardiology Services"
-        bg="bg-home-about"
+        bg="bg-home-trust"
       >
         <div className={SERVICE_GRID}>
           {CARDIOLOGY_SERVICES.map((service) => (
-            <DiagnosticServiceCard key={service.id} {...service} />
-          ))}
-        </div>
-      </CategorySection>
-
-      {/* Endoscopy */}
-      <CategorySection
-        id="endoscopy"
-        eyebrow="Gastroenterology"
-        title="Endoscopy & Gastro Diagnostics"
-        bg="bg-home-trust"
-      >
-        <div className="grid max-w-2xl gap-3 sm:grid-cols-2">
-          {ENDOSCOPY_SERVICES.map((service) => (
             <DiagnosticServiceCard key={service.id} {...service} />
           ))}
         </div>
